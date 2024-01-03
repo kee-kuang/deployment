@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: java-demo-db 
+type: Opaque
+data:
+  mysql-root-password: "MTIzNDU2"
+  mysql-password: "MTIzNDU2"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-demo-db 
+spec:
+  selector:
+    matchLabels:
+      project: www
+      app: mysql
+  template:
+    metadata:
+      labels:
+        project: www
+        app: mysql
+    spec:
+      containers:
+      - name: db
+        image: mysql:5.7.30
+        resources:
+          requests:
+            cpu: 500m
+            memory: 512Mi
+          limits: 
+            cpu: 500m
+            memory: 512Mi
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: java-demo-db
+              key: mysql-root-password
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: java-demo-db
+              key: mysql-password
+        - name: MYSQL_USER
+          value: "aliang"
+        - name: MYSQL_DATABASE
+          value: "k8s"
+        ports:
+        - name: mysql
+          containerPort: 3306
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - "mysqladmin ping -u root -p${MYSQL_ROOT_PASSWORD}"
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/mysql
+        
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: java-demo-db
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: java-demo-db 
+spec:
+  storageClassName: "managed-nfs-storage"
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: "8Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-demo-db
+spec:
+  type: ClusterIP
+  ports:
+  - name: mysql
+    port: 3306
+    targetPort: mysql
+  selector:
+    project: www
+    app: mysql 

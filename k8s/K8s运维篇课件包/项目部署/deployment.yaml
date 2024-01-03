@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: www
+      app: java-demo
+  template:
+    metadata:
+      labels:
+        project: www
+        app: java-demo
+    spec:
+      imagePullSecrets:
+      - name: registry-auth
+      containers:
+      - image: 192.168.31.90/microservice/java-demo:v1 
+        name: java-demo
+        resources:
+          requests:
+            cpu: 0.4
+            memory: 400Mi
+          limits:
+            cpu: 0.5
+            memory: 500Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 50
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 50
+          periodSeconds: 10
+        volumeMounts:
+        - name: config
+          mountPath: "/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/application.yml"
+          subPath: application.yml
+      volumes:
+      - name: config
+        configMap:
+          name: java-demo-config 
+          items:
+          - key: "config"
+            path: "application.yml"

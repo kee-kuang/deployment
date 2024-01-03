@@ -1,0 +1,23 @@
+# 使用一个轻量级的基础镜像
+FROM alpine:latest
+
+# 设置工作目录
+WORKDIR /root/
+
+
+RUN apk update && \
+    apk add --no-cache curl ca-certificates && \
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    chmod +x kubectl && \
+    mv kubectl /usr/local/bin/
+
+# 复制脚本文件到容器中
+COPY stop-workloads.sh /root
+COPY scale-services.sh /root/
+
+# 赋予脚本执行权限
+RUN chmod +x /root/stop-deploment.sh
+RUN chmod +x /root/scale-services.sh
+
+# 在容器启动时执行的命令
+CMD ["/bin/sh"]

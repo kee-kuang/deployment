@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: shutdown
+spec:
+  schedule: "0 22 * * *"  # 每天22：00 执行
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: stop-deployment
+            image: 
+            command: ["/bin/sh", "-c"]
+            args: ["sh /path/to/stop-start-workloads.sh"]
+          restartPolicy: OnFailure

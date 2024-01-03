@@ -1,0 +1,88 @@
+services:
+  consul:
+    image: lingxi-harbor.shushangyun.com/lingxi/consul:1.9.3
+    container_name: consul
+    ports:
+      - 8500:8500
+    restart: always
+    command: agent -server -bind=0.0.0.0 -client=0.0.0.0 -bootstrap-expect=1 -ui 
+
+  zipkin:
+    image: lingxi-harbor.shushangyun.com/lingxi/openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - 9411:9411
+    restart: always
+
+  redis:
+    image: lingxi-harbor.shushangyun.com/lingxi/redis:6.0.10
+    container_name: redis
+    ports:
+      - 6379:6379
+    restart: always
+    volumes:
+      - /data/redis/redis.conf:/etc/redis.conf
+      - /data/redis/data:/data
+    command: redis-server /etc/redis.conf
+
+  es:
+    image: lingxi-harbor.shushangyun.com/lingxi/elasticsearch:7.10.1
+    container_name: es
+    ports:
+      - 9200:9200
+      - 9300:9300
+    restart: always
+    environment:
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx1024m" #设置使用jvm内存大小
+    volumes:
+      - /data/es/data:/usr/share/elasticsearch/data
+      - /data/es/logs:/usr/share/elasticsearch/logs
+
+  kibana:
+    image: lingxi-harbor.shushangyun.com/lingxi/kibana:7.10.1
+    container_name: kibana
+    ports:
+      - 5601:5601
+    restart: always
+    links:
+      - "es:elasticsearch"
+
+  rabbitmq:
+    image: lingxi-harbor.shushangyun.com/lingxi/rabbitmq-delayed-message-exchange:rabbitmq-delayed-3.8.9 
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: always
+    environment:
+      - "RABBITMQ_DEFAULT_USER=jfzx_rabbitmq"
+      - "RABBITMQ_DEFAULT_PASS=jfzx_rabbitmq"
+    volumes:
+      - /data/rabbitmq/data:/var/lib/rabbitmq
+      - /data/rabbitmq/logs:/var/log/rabbitmq/log
+  
+  nacos:
+    image: nacos/nacos-server
+    container_name: nacos
+    ports:
+      - 8848:8848
+      - 9848:9848
+      - 9849:9849
+    restart: always
+    environment:
+      #- NACIS_AUTH_ENABLE: "true"
+      - "MODE:standalone"
+      - "NACOS_REPLICAS:1"
+      - "SPRING_DATASOURCE_PLATFORM:mysql"
+      - "MYSQL_SERVICE_HOST:210.21.48.70"
+      - "MYSQL_SERVICE_DB_NAME:nacos_config"
+      - "MYSQL_SERVICE_PORT:3506"
+      - "MYSQL_SERVICE_USER:root"
+      - "MYSQL_SERVICE_PASSWORD:AAinfo@123456.."
+    volumes:
+      - /data/standalone-logs/:/home/nacos/logs
+      - /data/plugins/:/home/naco/plugins
+      - /data/data:/home/nacos/data
+    network:
+      

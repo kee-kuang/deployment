@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-webhook-dingtalk-config
+  namespace: ops
+data:
+  config.yml: |
+    targets:
+      dingding_ops:
+        url: https://oapi.dingtalk.com/robot/send?access_token=bc67682b7b98b71877bf3e012a53ed55344d6ac65a6e40bdee5009bee3c90762
+      webhook1:
+        url: https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxxxxx
+        # secret for signature
+        secret: SEC000000000000000000000
+      webhook2:
+        url: https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxxxxx
+      webhook_legacy:
+        url: https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxxxxx
+        # Customize template content
+        message:
+          # Use legacy template
+          title: '{{ template "legacy.title" . }}'
+          text: '{{ template "legacy.content" . }}'
+      webhook_mention_all:
+        url: https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxxxxx
+        mention:
+          all: true
+      webhook_mention_users:
+        url: https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxxxxxx
+        mention:
+          mobiles: ['156xxxx8827', '189xxxx8325']
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-webhook-dingtalk
+  namespace: ops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-webhook-dingtalk
+  template:
+    metadata:
+      labels:
+        app: prometheus-webhook-dingtalk
+    spec:
+      containers:
+      - name: webhook 
+        image: timonwong/prometheus-webhook-dingtalk 
+        volumeMounts:
+        - name: config 
+          mountPath: "/etc/prometheus-webhook-dingtalk/config.yml"
+          subPath: config.yml
+      volumes:
+      - name: config
+        configMap:
+          name: prometheus-webhook-dingtalk-config
+          items:
+          - key: "config.yml"
+            path: "config.yml"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-webhook-dingtalk
+  namespace: ops
+spec:
+  selector:
+    app: prometheus-webhook-dingtalk
+  type: NodePort
+  ports:
+  - port: 8060
+    protocol: TCP
+    targetPort: 8060

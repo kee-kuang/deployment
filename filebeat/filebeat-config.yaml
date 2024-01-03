@@ -1,0 +1,348 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+  namespace: filebeat
+  labels:
+    k8s-app: filebeat
+data:
+  filebeat.yml: |-
+    filebeat.inputs:
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/after-sale-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: after-sale-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/contract-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: contract-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/enhance-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: enhance-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/file-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: file-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/gateway-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: gateway-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/logistics-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: logistics-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/marketing-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: marketing-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/merchant-member-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: merchant-member-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/message-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: message-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/open-api-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: open-api-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/order-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: order-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/pay-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: pay-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/platform-manage-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: platform-manage-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/platform-template-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: platform-template-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/product-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: product-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/purchase-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: purchase-service
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/report-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: report-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/rule-engine-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: rule-engine-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/scheduler-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: scheduler-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/search-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: search-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/settle-accounts-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: settle-accounts-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/sms-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: sms-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/system-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: system-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/transaction-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: transaction-service
+
+      close_older: 30m
+      force_close_files: true
+
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/containers/workflow-service*.log
+      multiline:
+          pattern: ^\d{4}
+          negate: true
+          match: after
+      fields:
+        doc_type: workflow-service
+
+
+    filebeat.config.modules:
+      path: ${path.config}/modules.d/*.yml
+      reload.enabled: false
+    output.logstash:
+      hosts: ["10.121.151.245:5045"]

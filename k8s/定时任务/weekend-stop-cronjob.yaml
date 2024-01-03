@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: weekend-shutdown
+spec:
+  schedule: "0 20 * * 5" # 每周五的 20:00
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: weekend-shutdown-restart-container
+            image: YOUR_IMAGE:YOUR_TAG
+            command: ["/bin/bash"]
+            args: ["-c", "/path/to/weekend_shutdown_and_restart.sh"]
+          restartPolicy: OnFailure
