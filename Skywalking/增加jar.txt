@@ -1,0 +1,1 @@
+java -jar -Duser.language=zh -Dspring.profiles.active=server  -Dskywalking.agent.service_name=uat::yst-pur -Dskywalking.collector.backend_service=172.17.34.242:11800  -javaagent:/usr/local/skywalking-agent/skywalking-agent.jar /data/app.jar

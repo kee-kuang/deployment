@@ -1,0 +1,32 @@
+groups:
+  - name: alert
+    rules:
+    - alert: RabbitmqNodeDown
+      expr: sum(rabbitmq_build_info) < 3
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Rabbitmq node down (instance {{ $labels.instance }})
+        description: "Less than 3 nodes running in RabbitMQ cluster\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: RabbitmqClusterDown
+      expr: sum(rabbitmq_running) < 3
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Rabbitmq cluster down (instance {{ $labels.instance }})
+        description: "Less than 3 nodes running in RabbitMQ cluster\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: RabbitmqOutOfMemory
+      expr: rabbitmq_node_mem_used / rabbitmq_node_mem_limit * 100 > 90
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: Rabbitmq out of memory (instance {{ $labels.instance }})
+        description: "Memory available for RabbmitMQ is low (< 10%)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      
+
+
+
+

@@ -1,0 +1,114 @@
+version: '3.7'
+
+services:
+  redis-1:
+    image: registry.cn-guangzhou.aliyuncs.com/keee/redis:5.0.4-test
+    
+    networks:
+      - middleware
+     
+    volumes:
+      - redis-data:/data
+      - /opt/redis.conf:/usr/local/etc/redis/redis.conf
+    deploy:
+      placement:
+        constraints:
+          - node.label.redis == node1
+
+  redis-2:
+    image: registry.cn-guangzhou.aliyuncs.com/keee/redis:5.0.4-test
+    
+    networks:
+      - middleware
+     
+    volumes:
+      - redis-data:/data
+      - /opt/redis.conf:/usr/local/etc/redis/redis.conf
+    deploy:
+      placement:
+        constraints:
+          - node.label.redis == node2
+
+  redis-3:
+    image: registry.cn-guangzhou.aliyuncs.com/keee/redis:5.0.4-test
+    
+    networks:
+      - middleware
+     
+    volumes:
+      - redis-data:/data
+      - /opt/redis.conf:/usr/local/etc/redis/redis.conf
+    deploy:
+      placement:
+        constraints:
+          - node.label.redis == node3
+
+  redis-4:
+    image: registry.cn-guangzhou.aliyuncs.com/keee/redis:5.0.4-test
+    
+    networks:
+      - middleware
+     
+    volumes:
+      - redis-data:/data
+      - /opt/redis.conf:/usr/local/etc/redis/redis.conf
+    deploy:
+      placement:
+        constraints:
+          - node.label.redis == node4
+
+  redis-5:
+    image: registry.cn-guangzhou.aliyuncs.com/keee/redis:5.0.4-test
+    
+    networks:
+      - middleware
+     
+    volumes: 
+      - redis-data:/data
+      - /opt/redis.conf:/usr/local/etc/redis/redis.conf
+    deploy:
+      placement:
+        constraints:
+          - node.label.redis == node5
+
+  redis-6:
+    image: registry.cn-guangzhou.aliyuncs.com/keee/redis:5.0.4-test
+    networks:
+      - middleware 
+    volumes: 
+      - redis-data:/data
+      - /opt/redis.conf:/usr/local/etc/redis/redis.conf
+    deploy:
+      placement:
+        constraints:
+          - node.label.redis == node6
+    
+
+networks:
+  middleware:
+    external: true
+
+# 挂载卷
+volumes:
+  redis-data:
+
+
+# 每台机器上创建持久化目录
+#mkdir /redis-data
+
+# 需创建网络，看/doc/docker-networks.md文件
+# docker network create -d overlay --attachable middleware
+
+
+# 启动节点
+# docker stack deploy -c redis.yml redis-cluster 
+
+# 组成集群 任一一台主机上 会自动分配主从 
+# docker exec -it $(docker ps -qf "name=redis-cluster_redis.1") redis-cli --cluster create $(docker inspect -f '{{.NetworkSettings.Networks.middleware.IPAddress}}:6379' $(docker ps -qf "name=redis-cluster_redis.")) --cluster-replicas 1
+# redis-cli --cluster create 10.0.0.26:6379 ip2:5432 ip3:5432 ip4:5432 ip5:5432 ip6:5432  
+
+# 检查状态
+# docker exec -it $(docker ps -qf "name=redis-cluster_redis.1") redis-cli cluster info
+
+# 执行命令
+# docker exec -it $(docker ps -qf "name=redis-cluster_redis.1") redis-cli -h 10.0.1.15 -p 6379 get b

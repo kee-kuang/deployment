@@ -1,0 +1,2 @@
+FROM oraclejdk:base
+COPY skywalking-agent /usr/local/skywalking-agent

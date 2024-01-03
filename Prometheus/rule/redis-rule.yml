@@ -1,0 +1,57 @@
+groups:
+  - name: alert
+    rules:
+    - alert: RedisDown
+      expr: redis_up == 0
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Redis down (instance {{ $labels.instance }})
+        description: "Redis instance is down\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: Redis失去主节点
+      expr: (count(redis_instance_info{role="master"}) or vector(0)) < 1
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Redis missing master (instance {{ $labels.instance }})
+        description: "Redis cluster has no node marked as master.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: Redis-salve 掉线
+      expr: count without (instance, job) (redis_connected_slaves) - sum without (instance, job) (redis_connected_slaves) - 1 > 1
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Redis disconnected slaves (instance {{ $labels.instance }})
+        description: "Redis not replicating for all slaves. Consider reviewing the redis replication status.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: RedisReplicationBroken
+      expr: delta(redis_connected_slaves[1m]) < 0
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Redis replication broken (instance {{ $labels.instance }})
+        description: "Redis instance lost a slave\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: Redis连接太多 
+      expr: redis_connected_clients / redis_config_maxclients * 100 > 80
+      for: 2m
+      labels:
+        severity: warning
+      annotations:
+        summary: Redis too many connections (instance {{ $labels.instance }})
+        description: "Redis is running out of connections (> 90% used)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: Redis拒接连接
+      expr: increase(redis_rejected_connections_total[1m]) > 0
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: Redis rejected connections (instance {{ $labels.instance }})
+        description: "Some connections to Redis has been rejected\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+
+
+
+
+

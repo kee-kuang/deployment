@@ -1,0 +1,15 @@
+基于pgpool搭建 postgresql集群
+
+基于pgpool 中间件实现的一主多从的集群部署  
+环境：
+MASTER  210.21.48.69    
+NODE    210.21.48.70
+VIP     210.21.48.72
+
+版本：
+
+centos      7
+postgresql  14
+pgpool-ii   4
+
+

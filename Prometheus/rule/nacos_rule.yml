@@ -1,0 +1,22 @@
+groups:
+- name: alerts
+  rules:
+  - alert: Nacos Down
+    expr: up{job="nacos"} == 0 
+    for: 1m
+    labels: 
+      severity: critical 
+      target: nacos
+    annotations:
+      description: "Nacos is Down"
+      summary: "{{ $labels.instance }} 已停止超过1分钟"
+  - alert: system Down
+    expr: up {job="node_exporter",instance="10.0.1.185:1880"} == 0
+    for: 1m
+    labels:
+      severity: emergency
+      target: nacos
+    annotations:
+      description: "system is Down"
+      summary: "{{ $labels.instance }} 已停止超过1分钟"
+    

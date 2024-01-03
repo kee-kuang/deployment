@@ -1,0 +1,140 @@
+version: '3.8'
+
+services:
+  redis-1:
+    image: redis:5.0.4
+    networks:
+      - middleware  
+    volumes:
+      - /home/data/redis:/data
+      - /home/data/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: host
+      - target: 16379
+        published: 16379
+        protocol: tcp
+        mode: host
+    deploy:
+      placement:
+        constraints:
+          - node.labels.redis == node1
+
+  redis-2:
+    image: redis:5.0.4
+    networks:
+      - middleware  
+    volumes:
+      - /home/data/redis:/data
+      - /home/data/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: host
+      - target: 16379
+        published: 16379
+        protocol: tcp
+        mode: host
+    deploy:
+      placement:
+        constraints:
+          - node.labels.redis == node2
+
+  redis-3:
+    image: redis:5.0.4
+    networks:
+      - middleware
+    volumes:
+      - /home/data/redis:/data
+      - /home/data/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: host
+      - target: 16379
+        published: 16379
+        protocol: tcp
+        mode: host
+    deploy:
+      placement:
+        constraints:
+          - node.labels.redis == node3
+
+  redis-4:
+    image: redis:5.0.4
+    networks:
+      - middleware 
+    volumes:
+      - /home/data/redis:/data
+      - /home/data/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: host
+      - target: 16379
+        published: 16379
+        protocol: tcp
+        mode: host
+    deploy:
+      placement:
+        constraints:
+          - node.labels.redis == node4
+
+  redis-5:
+    image: redis:5.0.4
+    networks:
+      - middleware 
+    volumes: 
+      - /home/data/redis:/data
+      - /home/data/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: host
+      - target: 16379
+        published: 16379
+        protocol: tcp
+        mode: host
+    deploy:
+      placement:
+        constraints:
+          - node.labels.redis == node5
+
+  redis-6:
+    image: redis:5.0.4
+    networks:
+      - middleware 
+    volumes: 
+      - /home/data/redis:/data
+      - /home/data/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - target: 6379
+        published: 6379
+        protocol: tcp
+        mode: host
+      - target: 16379
+        published: 16379
+        protocol: tcp
+        mode: host
+    deploy:
+      placement:
+        constraints:
+          - node.labels.redis == node6
+    
+
+networks:
+  middleware:
+    external: true
+
+
+#
+#redis-cli --cluster create 10.0.0.26:6379 10.0.1.132:6379 10.0.1.134:6379 10.0.1.137:6379 10.0.1.139:6379  10.0.1.153:6379 -a SSY@redis$ --cluster-replicas 1
+#redis-cli --cluster create 172.20.5.102:6379 172.20.5.103:6379 172.20.5.104:6379 172.20.5.105:6379 172.20.5.106:6379  172.20.5.107:6379 -a SSY@redis$ --cluster-replicas 1
+
+## ./redis-full-check --source=10.0.1.90:6379 --sourcepassword=jfzx_redis --sourcedbtype=0 --target="10.0.0.26:6379;10.0.1.134:6379;10.0.1.132:6379" --targetpassword=SSY@redis$ --targetdbtype=1 --comparemode=1 --qps=10 --batchcount=1000 --parallel=10

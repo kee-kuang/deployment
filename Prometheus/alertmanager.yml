@@ -1,0 +1,25 @@
+global:
+  resolve_timeout: 5m
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 30m
+  receiver: 'dingding'
+  routes:
+  - receiver: 'dingding'
+    group_wait: 10s
+    continue: true
+templates:
+    - 'templates/*.tmpl'
+receivers:
+  - name: 'dingding'
+    webhook_configs:
+      - url: 'http://10.121.151.66:8060/dingtalk/dingding/send'
+        send_resolved: true
+inhibit_rules:
+  - source_match:
+      severity: 'emergency'
+    target_match:
+      severity: 'critical'
+    equal: ['instance']

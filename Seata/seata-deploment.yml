@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seata-server
+  namespace: 
+  labels:
+    k8s-app: seata-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-seata-node: seata-server
+  template:
+    metadata:
+      labels:
+        k8s-seata-node: seata-server
+        k8s-app: seata-server
+    spec:
+      containers:
+        - name: seata-server
+          image: registry.zrhsh.com/nrp-2b-uat/seata:1.7.1
+          env:
+            - name: SEATA_PORT
+              value: "8091"
+          volumeMounts:
+            - name: seata-config
+              mountPath: /seata-server/conf
+            - name: seata-log
+              mountPath: /seata-server/conf/logback
+      volumes:
+        - name: seata-config
+          configMap:
+            name: seata-server-config
+        - name: seata-log
+          configMap:
+            name: seata-server-log-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: seata-server
+  namespace: nrp-2b-uat
+  labels:
+    k8s-app: seata-server
+spec:
+  type: NodePort
+  ports:
+    - port: 8091
+      nodePort: 30002
+      targetPort: 8091
+      protocol: TCP
+      name: http1
+    - port: 17091
+      nodePort: 30003
+      targetPort: 17091
+      protocol: TCP
+      name: http2
+  selector:
+    k8s-app: seata-server

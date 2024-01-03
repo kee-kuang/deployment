@@ -1,0 +1,13 @@
+FROM openjdk:11.0.15-slim-buster
+WORKDIR /app/
+COPY sentinel-dashboard.jar /app/app.jar
+
+ENV SERVER_PORT=8080
+ENV DASHBOARD_SERVER=172.17.34.238:8080
+ENV PROJECT_NAME=sentinel-dashboard
+ENV NACOS_ADDRESS=172.17.34.114:8848
+ENV NACOS_NAMESPACE=nrp-2b-beta
+
+CMD ["sh", "-c", "java -Dserver.port=$SERVER_PORT -Dcsp.sentinel.dashboard.server=$DASHBOARD_SERVER -Dproject.name=$PROJECT_NAME -Dnacos.address=$NACOS_ADDRESS -Dnacos.namespace=$NACOS_NAMESPACE -jar app.jar "]
+
+

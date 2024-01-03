@@ -1,0 +1,66 @@
+添加逻辑卷
+#fdisk-l
+#pvcreate/dev/vdb
+#vgcreatepgsql-vg1/dev/vdb
+#lvcreate-l51199-npgsql-lv1pgsql-vg1
+#mkfs.ext4/dev/pgsql-vg1/pgsql-lv1
+#vim/etc/fstab
+/dev/pgsql-vg1/pgsql-lv1/dataext4defaults00
+#mount-a
+#df-HT
+
+
+安装PostgreSQL12
+#yum install-y readline readline-devel openssl openssl-devel zlib zlib-devel
+#yum-yinstallhttps://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-
+redhat-repo-latest.noarch.rpm
+#yum-yinstallpostgresql12
+#yum-yinstallpostgresql12-server
+#mkdir-p/data/postgresql/data
+#chown-Rpostgres.postgres/data/postgresql/data
+
+#su-postgres
+
+-bash-4.2$/usr/pgsql-12/bin/initdb -D /data/postgresql/data/
+
+
+切换到root用户：
+#vim/usr/lib/systemd/system/postgresql-12.service
+修改Environment=PGDATA=/data/postgresql/data/
+#systemctldaemon-reload
+#systemctlstartpostgresql-12
+#systemctlenablepostgresql-12
+#systemctlstatuspostgresql-12
+
+
+切换用户修改配置文件
+#su-postgres
+-bash-4.2$vim/data/postgresql/data/postgresql.conf
+listen_addresses='*'
+max_connections=500
+
+-bash-4.2$vim/data/postgresql/data/pg_hba.conf
+追加hostallall0.0.0.0/0md5
+
+切换root重启
+#systemctl restart postgresql-12
+#systemctl status postgresql-12
+#su-postgres
+
+-bash-4.2$psql
+
+修改postgres密码
+postgres=# alter user postgres ENCRYPTED PASSWORD 'Shushangyun520';
+ALTER ROLE
+测试连接：
+创建数据库：
+postgres=#create user zhongshi_test with password'zhongshi_test';
+CREATE ROLE
+postgres=#create database zhongshi_test_db owner zhongshi_test;
+CREATE DATABASE
+postgres=#create database zhongshi_pass_test_db owner zhongshi_test;
+CREATEDATABASE
+postgres=#grant all privileges on database zhongshi_test_db to zhongshi_test;
+GRANT
+postgres=#grant all privileges on database zhongshi_pass_test_db to zhongshi_test;
+GRANT

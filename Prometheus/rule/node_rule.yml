@@ -1,0 +1,40 @@
+groups:
+  - name: alerts
+    rules:
+    - alert: Node out of Memory
+      expr: (node_memory_MemTotal_bytes - (node_memory_MemFree_bytes+node_memory_Buffers_bytes+node_memory_Cached_bytes )) / node_memory_MemTotal_bytes * 100 > 80
+      for: 1m
+      labels:
+        severity: critical
+        target: Node
+      annotations:
+        description: "Node Memory is over 80%"
+        summary: "{{ $labels.instance }} 内存已超过80%"
+    - alert: Node out of Disk Space
+      expr: ((node_filesystem_avail_bytes * 100) / node_filesystem_size_bytes < 10 and ON (instance, device, mountpoint) node_filesystem_readonly == 0) * on(instance) group_left (nodename) node_uname_info{nodename=~".+"}
+      for: 1m
+      labels:
+        severity: critical
+        target: Node
+      annotations:
+        description: "Disk is almost full (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}" 
+        summary: "${{ $labels.instance }} 硬盘内存不足10%"
+    - alert: HostHighCpuLoad
+      expr: (sum by (instance) (avg by (mode, instance) (rate(node_cpu_seconds_total{mode!="idle"}[2m]))) > 0.8) * on(instance) group_left (nodename) node_uname_info{nodename=~".+"}
+      for: 10m
+      labels:
+        severity: critical 
+        target: Node 
+      annotations:
+        summary: Host high CPU load (instance {{ $labels.instance }})
+        description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+    - alert: system Down 
+      expr: up{job = "node_exporter"} == 0
+      for: 1m
+      labels: 
+        severity: emergency
+        target: Node
+      annotations:
+        description: system is Down 
+        summary: "{{ $labels.instance }} 已停止超过1分钟"
+
