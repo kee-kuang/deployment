@@ -1,0 +1,48 @@
+redis 高可用 集群模式和哨兵模式的区别，优缺点
+
+redis 冗余和分片
+
+nginx 支持几层转发 怎么做
+
+mysql 复制类型 
+
+mysql 索引，什么情况要用到索引 有什么索引类型
+
+mysql 去重 
+
+mysql 导出 只导出表结构  
+
+mysql 备份方法
+
+mysql 误删怎么去找回数据
+
+docker 已经做好了镜像，怎么样替换启动命令
+
+docker 映射端口
+
+k8s stateful 和 Replicaset deployment 的区别  rs 和 deployment 的区别
+
+k8s 替换镜像命令 增加副本数命令
+
+k8s 组件 组成 
+
+k8s 存储   pvc 
+
+k8s service 有几种类型  headless 和其它的有什么区别  
+
+k8s  ingress 怎么将多个微服务多个端口 只暴露使用一个或者几个端口 去使用
+
+shell 去重  
+
+shell 获取变量参数 $1 $2 $0
+
+sed awk jq 
+
+shell 判断a文件是否存在，存在则删除
+
+sed 内容替换  xargs 命令使用
+
+
+
+
+

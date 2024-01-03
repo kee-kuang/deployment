@@ -1,0 +1,39 @@
+大家好，我是邝卓淇。我有在两家家公司工作的经验，上家公司主要负责服务器主机和网络设备的维护和中间件搭建，同时运用Python脚本进行运维工作。目前在职的公司，我主要是工作是根据项目需求搭建中间件服务，利用K8s和Jenkins完成前后端服务的发布并配合Prometheus监控和告警。我也负责修复安全漏洞和提供相关的交付文档，确保项目成功上线和交付。我熟悉常见中间件（例如redis、rabbtimq）和数据库搭建，也熟悉K8s、docker等容器化技术的运用。我能编写Shell脚本来简化运维工作。
+
+
+现在公司产品是全链路业务协同中台（scm）
+
+
+增删改查
+查询： inner join(内链接) 左查询 left join 右连接 right join  子查询(在查询中嵌套另一个查询)
+共享锁：
+Lock tables table_name Read;
+独占锁：
+lok tables table_name write;
+解锁：
+unlock tables
+备份数据：
+mysqldump -u username -p passwd database_name > xx.sql
+恢复 mysql -u -p databa < xx.sql
+mysql 主备
+binlog 日志记录数据库语句，放到master 的binlog 上 ，从节点会从io线程上拉取 binlog日志上的内容，放到自己的relay log 日志里，然后执行relay log 日志的内容
+
+K8s：
+K8s 有状态和无状态的区别：
+有状态应用是需要处理持久性数据，并且必须要顺序启动和扩展
+无状态是不依赖持久性数据，可以水平扩展
+
+k8s 是开源的容器编排工具，docker 是提供容器生命周期管理和构建时运行的容器
+K8s 有几种service  集群ip（只能用于集群内） nodeport （映射集群内部端口）  healess LoadBalancer ExternalName
+
+tcp 握手 
+首先先建立连接请求，然后确认连接请求，建立连接，最后是确认连接确立
+tcp 挥手
+首先客户端先发送关闭连接，服务器收到请求之后，发送接受关闭请求，服务器再次发送表示准备关闭连接，客户端确认关闭请求，其次客户端和服务器都确认关闭请求
+
+
+
+k8s 
+
+
+
