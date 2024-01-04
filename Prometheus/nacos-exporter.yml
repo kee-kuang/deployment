@@ -1,0 +1,20 @@
+groups:
+- name: Nacos
+  rules:
+    - alert: Nacos Down
+      expr: up{job="nacos"} == 0
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        description: Nacos is Down
+        summary: (instance {{ $labels.instance }}) is Down
+    - alert: Nacos系统服务数量不正确
+      expr: |
+       nacos_monitor{name="serviceCount"} != 24
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        description: 注册服务数量不正确
+        summary: (instance {{ $labels.instance }}) 注册服务数缺少
