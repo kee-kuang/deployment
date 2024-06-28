@@ -13,7 +13,7 @@ services:
       - 6379:6379
     restart: always
     volumes:
-      - /data/redis/redis.conf:/etc/redis.conf
+      - /data/redis/redis.conf:/etc/redis.conf 
       - /data/redis/data:/data
     command: redis-server /etc/redis.conf
 
@@ -26,8 +26,8 @@ services:
       - 15672:15672
     restart: always
     environment:
-      - "RABBITMQ_DEFAULT_USER=lingxi"
-      - "RABBITMQ_DEFAULT_PASS=lingxi"
+      - "RABBITMQ_DEFAULT_USER=lingxi" #设置rabbitmq 用户
+      - "RABBITMQ_DEFAULT_PASS=lingxi" #设置rabbitmq 密码
     volumes:
       - /data/rabbitmq/data:/var/lib/rabbitmq
       - /data/rabbitmq/logs:/var/log/rabbitmq/log
@@ -54,8 +54,8 @@ services:
     environment:
       - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms512m -Xmx1024m"
-      - "ELASTIC_PASSWORD=lingxi"
-      - "TAKE_FILE_OWNERSHIP=true"
+      - "ELASTIC_PASSWORD=lingxi" #设置 es密码
+      - "TAKE_FILE_OWNERSHIP=true"  #通过环境变量TAKE_FILE_OWNERSHIP强制容器更改用于数据和日志目录的任何绑定安装的所有权
     volumes:
       - /data/es/data:/usr/share/elasticsearch/data:rw
       - /data/es/logs:/usr/share/elasticsearch/logs:rw
@@ -72,8 +72,8 @@ services:
       - "elasticsearch:elasticsearch"
     environment:
       - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
-      - "ELASTICSEARCH_USERNAME=elastic"
-      - "ELASTICSEARCH_PASSWORD=lingxi"
+      - "ELASTICSEARCH_USERNAME=elastic" #es的用户
+      - "ELASTICSEARCH_PASSWORD=lingxi" #es设置的密码
     restart: always
 
   arthas: 

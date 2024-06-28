@@ -1,0 +1,11 @@
+filebeat.inputs:
+  - type: log
+    paths:
+      - /data/logs/*.log
+    multiline.pattern: '^\d{4}-\d{2}-\d{2}'  # 以日期开头的行作为新的日志开始
+    multiline.negate: true  # 不匹配模式的行会被合并到前一行
+    multiline.match: after  # 匹配后续行
+
+output.logstash:
+  hosts:
+    - "10.0.1.93:5046"

@@ -32,13 +32,13 @@ java -version
 ### 2.1 下载mysql Yum或者安装包
 
 ```
-wget https://dev.mysql.com/get/mysql80-community-release-el7-7.noarch.rpm //centos7 yum安装包
+wget https://dev.mysql.com/get/mysql80-community-release-el7-11.noarch.rpm //centos7 yum安装包
 ```
 
 ### 2.2 yum安装 mysql-Yum包
 
 ```
-yum localinstall mysql80-community-release-el7-7.noarch.rpm
+yum localinstall mysql80-community-release-el7-11.noarch.rpm
 yum -y install mysql 
 yum install -y mysql-community-server
 
@@ -49,7 +49,7 @@ yum install -y mysql-community-server
  注意：8.0版本需要先创建用户，再授权
 
 ```
-
+alter user 'root'@'localhost' identified by '2P8ZiVb20Yna3DV1';
 create user 'root'@'%' identified by '}M7VwgK.k@';
 GRANT ALL ON *.* TO 'root'@'%';
 flush privileges;

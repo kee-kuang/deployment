@@ -166,7 +166,7 @@ FastDFS V6.09 引入网络框架库 libserverframe，替换原有的 tracker nio
 cd /usr/local/src
 wget https://keekuang.oss-cn-guangzhou.aliyuncs.com/packet/FastDFS/libserverframe-master.zip
 unzip libserverframe-master.zip libservframe-master
-cd libservframe-master
+cd libserverframe-master
 ./make.sh clean && ./make.sh && ./make.sh install
 ```
 
@@ -197,6 +197,7 @@ cd fastdfs-6.9.5
 wget https://keekuang.oss-cn-guangzhou.aliyuncs.com/packet/FastDFS/fastdfs-nginx-module-1.23.tar.gz
 tar zxf fastdfs-nginx-module-1.23.tar.gz
 cp /usr/local/src/fastdfs-nginx-module-1.23/src/mod_fastdfs.conf /etc/fdfs/
+wget https://keekuang.oss-cn-guangzhou.aliyuncs.com/packet/FastDFS/nginx-1.24.0.tar.gz
 tar zxf nginx-1.24.0.tar.gz
 cd nginx-1.24.0
 ./configure --prefix=/usr/local/nginx --add-module=/usr/local/src/fastdfs-nginx-module-1.23/src/
@@ -296,7 +297,7 @@ fdfs_storaged /etc/fdfs/storage.conf restart
 监控服务器状态命令：fdfs_monitor
 
 ```
-/usr/bin/fdfs_monitor /etc/fdfs/client.conf
+    /usr/bin/fdfs_monitor /etc/fdfs/client.conf
 ```
 
 上传文件命令：fdfs_upload_file
@@ -366,7 +367,7 @@ vim /etc/fdfs/mod_fastdfs.conf
     store_path0=/usr/local/fastdfs/storage/data2_1
     store_path1=/usr/local/fastdfs/storage/data2_2
 
- 
+
 5、启动新storage服务,测试上传文件
 
 fdfs_storage /etc/fdfs/storage2.conf

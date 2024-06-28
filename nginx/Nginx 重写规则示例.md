@@ -92,3 +92,9 @@ if ($host = edi.ccsdzsc.com) {
         }
 ```
 
+### 固定跳转
+
+```
+rewrite ^/$ /6 permanent;
+```
+
