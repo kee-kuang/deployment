@@ -1,0 +1,19 @@
+[Unit]
+Description=node_exporter
+Documentation=https://prometheus.io/
+After=network.target
+
+[Service]
+Type=simple
+#User=prometheus
+ExecStart=/data/node_exporter/node_exporter \
+--collector.mountstats \
+--collector.systemd \
+--collector.ntp \
+--collector.tcpstat \
+--web.listen-address=:1880
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+Restart=always
+[Install]
+WantedBy=multi-user.target

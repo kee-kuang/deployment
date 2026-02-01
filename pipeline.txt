@@ -1,0 +1,452 @@
+jenkins pipeline 
+ 基础语法： 
+    声明式和脚本式
+声明式特点：
+1.最外层必须有pipeline{/do something}来包裹
+2.不需要分号作为分隔符，每个语句必须一行内
+3.不能直接使用groovy语句（循环判断等等），需要被script{}包裹
+
+例如：
+pipeline {
+agent any //没有指定agent
+stages{ //步骤
+    stage('checkout'){
+	  steps{
+	    sh 'echo xxx'
+	  }
+	}
+       }
+}
+
+参数详解：
+agent：该部分指定整个Pipeline或特定阶段将在Jenkins环境中执行的位置，具体取决于该agent 部分的放置位置。该部分必须在pipeline块内的顶层定义 ，也可以使用在stage级。
+指定流水线的执行位置，流水线中的每个阶段都必须在某个地方（物理机，虚拟机或 Docker 容器）执行，agent 部分即指定具体在哪里执行
+stage：表示这个Pipeline的某一个执行阶段（使用stage使得逻辑变得更加简单明了）
+steps: 包含一个或者多个在stage块中执行的step序列（在这里执行操作：运行maven或者部署等等）
+environment：指定键值对，可用于step中，主要是为常量或者变量赋值，根据所在的位置来决定其作用范围（类似于java中全局和局部的概念）
+options：允许执行pipeline内置的专用选项，也可以使用由插件提供的
+parameters:提供触发pipeline时的参数列表,parameters(参数)：parameters 用来在pipeline中实现参数化构建，就是根据用户指定的不同参数执行不同的操作
+支持多种类型的参数：字符串参数，布尔值参数，文本参数，选择参数，文件参数，密码参数
+trigger：定义了触发pipeline的方式（jenkins1.x中的pollscm定时构建）
+tools:自动安装工具，注意这里使用的一定是在jenkins全局配置中已经定义好了的
+when：可以用来执行一些代码逻辑
+post:可以根据pipeline的状态来执行一些操作
+
+agent参数详解：
+   any ： 在任何可用的机器上执行pipeline
+   none ： 当在 pipeline 块的顶部没有全局代理， 该参数将会被分配到整个流水线的运行中并且每个 stage 部分都需要包含他自己的 agent 部分。比如: agent none
+   agent{ label 'slave1'}
+   label:在提供了标签的 Jenkins 环境中可用的代理上执行流水线或阶段。   
+   node: 和label类似，但node运行其他选项，例如：customworkspace
+   
+   
+agent例子：
+any:
+pipeline {
+    agent any
+}
+
+none:
+pipeline {
+   agent none
+   stages {
+      stage('bulid')
+	  agent {
+	       // 下面节点是自定义节点名称
+	     label 'remote_node1' 
+	  }
+   }
+}
+
+label:
+pipeline {
+    agent {
+	//具体节点的label名称
+	 label 'jdk-1.8'
+	}
+}
+
+post部分：
+post 部分用来指定 pipeline 或者 stage 执行完毕后的一些操作，比如发送邮件、环境清理等。post 部分在 Jenkins 代码中是可选的，可以放到顶层，也就是和 agent 同级，也可以放到stage 中。在 post 代码块中支持多种指令，比如：always、success、failure、aborted、unstable、changed 等等
+例子：
+pipeline {
+agent any 
+stages {
+   stage ("build") {
+       bat "dir"
+   }
+}
+post {
+  always {
+     script{
+	    //操作语句
+	 }
+  }
+}
+}
+always 是当在pipeline 执行完后一定执行的操作，不管成功还是失败
+success 是当pipeline执行完毕构建为成功的时候才执行的
+failure 是当pipeline 执行完毕后构建为失败的时候才执行的
+aborted 当pipeline被手动终止时执行的
+unstable 是当pipeline构建结果不稳定的时候执行的操作
+changed 是当执行完毕后且构建状态和之前不一致时执行
+命令组合例子：
+pipeline { 
+  agent any 
+  stages {
+    stage ("build"){
+	   bat "dir"
+	   }
+  }
+  port {
+   always {
+     script {
+	    echo "always"
+	 }
+   }
+   success {
+     script {
+	   echo "success"
+	 }
+   }
+   failure
+     script{
+	   echo "failure"
+	 }
+  }
+ }
+ 
+stages:pipeline 中单个阶段的操作封装到stages中，stages中可以包含多个stage
+stage:一个单独的阶段，实际上所有实际工作都包括在一个或者多个stage指令。stage{..}
+里面有一个强制的字符串参数，用来描述stage的作用，这个字符串参数是不支持变量，只能
+自己取名一个描述字段
+steps：一个stage下至少要有一个steps,一般就是一个Steps，可以在steps 下写调用一个或者几个的
+的方法
+
+注意：
+1.在声明式pipeline，有且只能有一个stages
+2.一个stage下至少要有一个steps或者parallel{..}【//parallel是并行构建】或者是stages{..}
+多层嵌套只支持最后一个stage{..}里面
+例子：
+pipeline {
+  agent any
+  stages{
+    stage('build'){
+	   steps (echo 'build')
+	}
+  stage ('test'){
+     steps {echo "$(java_home)"}
+    } 
+  }
+}
+
+environment（环境）:通过键值的方式定义整个pipeline或者是stage中使用的变量 (类似定义变量的工具)
+options（选项）:指令在jenkins在pipeline的可选的，这是用来指定一些属性和值，这些预定义的选项可以应用到
+整个流水线中，参数：
+retry buildDiscarder checkoutToSubdirectory disableConcurrentBuilds timeout 
+
+retry:表示 Jenkins 中的 job 执行失败后继续进行几次尝试。可以放到顶层的 pipeline 中也可以放到 stage 中。
+注意：这个次数是指总次数，包括第 1 次失败
+
+
+
+例子：
+pipeline {
+   agent any 
+   options {
+     retry(3) 尝试三次
+   }
+   stages {
+   stage ('test'){
+      steps {
+	     //步骤 
+	  }       
+   }
+   }
+}
+
+buildDiscarder  pipeline保持构建的最大个数。当pipeline构建完毕之后，会在workspeace 中保存执行日志和内容
+如果执行太多的话就会占用过多的存储空间
+例如：options { buildDiscarder(logRotator(numToKeepStr: '1')) }
+例子：
+pipeline {
+  agent any 
+  options {
+    buildDiscarder(logRotator(numToKeepStr:'2'))
+  }
+  stages {
+    stage('test'){
+	   steps {
+	   //步骤 
+	   }
+	}
+  }
+}
+
+LogRotator构造参数分别为：
+daysToKeep: 构建记录将保存的天数
+numToKeep: 最多此数目的构建记录将被保存
+artifactDaysToKeep: 比此早的发布包将被删除，但构建的日志、操作历史、报告等将被保留
+artifactNumToKeep: 最多此数目的构建将保留他们的发布包
+
+
+checkoutToSubdirectory: 在工作空间的子目录进行check out
+指定检出到工作空间的子目录中。Jenkins 从代码管理库中拉取代码时默认检出到工作空间的根目录
+例如:options { checkoutToSubdirectory('path')}
+例子：
+pipeline {
+  agent any 
+  options {
+      checkoutToSubdirectory('subdir')  //默认检出地址
+     }
+   stages{
+     stage(test){
+	    step{
+		  //步骤
+		}
+	 }
+   }	 
+}
+
+disableConcurrentBuilds:阻止pipeline同时执行，默认的pipeline是可以同时执行多次的，为了防止同时访问
+共享资源或者防止一个较快的并发将较慢的并行执行给碾压的问题出现，可以使用此参数禁止并发执行
+例子：
+pipeline{
+  agent any 
+  options{
+    disableConcurrentBuilds()
+  }
+  stages{
+     stage('test'){
+	   steps{
+	     //步骤 
+	   }
+	 }
+  }
+}
+
+timeout:设置jenkins运行的超时时间，超过超时时间，job会自动被终止 (分：MINUTS,时：HOURS 秒：SECONDS)
+例如：options{timeout(time:1,unit:'MINUTS')}
+例子：
+   pipeline {
+   agent any 
+    options{
+	   timeout(time:10,unit:'HOURS')  //超过10小时自动终止
+	}
+    stages{
+	   stage('test'){
+	     steps{
+		   //步骤
+		 }
+	   }
+	}	
+}
+
+skipDefaultCheckout：删除隐式的 checkout scm 语句，
+因此可以从 Jenkinsfile 定义的流水线中跳过自动的源码检出功能 （即跳过默认设置的代码check out）
+例如：options { skipDefaultCheckout() }
+例子：
+   options {
+    skipDefaultCheckout()
+}
+
+parameters(参数)：parameters 用来在pipeline中实现参数化构建，就是根据用户指定的不同参数执行不同的操作
+支持多种类型的参数：字符串参数，布尔值参数，文本参数，选择参数，文件参数，密码参数
+
+字符串参数：string 此参数允许用户定义一个字符串参数。用户可以在jenkins ui上面输入字符串，常用：用户名等
+例子：
+pipeline {
+    agent any
+    parameters {
+        string(name: 'DEPLOY_ENV', defaultValue: 'release', description: '')
+    }
+}
+
+布尔值参数：booleanParam 此参数是在执行构建的时候在jenkins ui 选择是与否，选择是，执行下列步骤，
+选择否，则跳过参数  基本的true/false参数。其子参数为name、defaultValue及description
+例子；pipeline {
+      agent any 
+	  parameters{
+	     booleanParam(name:'xxx'，defaultValue:true/false , description:'')
+	  }
+}
+
+文件参数：file 此参数允许用户选择一个文件给流水线使用。其子参数包括fileLocation和description
+已选择的文件位置表明哪里可以用来存放我们选择并上传文件，这个位置是相对于工作空间而言的相对路径
+参数化构建 UI 上提供一个文件路径的输入框，Jenkins 会自动去根据用户提供的网络路径去查找并下载
+例子：pipeline{
+        agent any
+		parameters{
+		   name:{file(fileLocation:'',description:'')}
+		}
+}
+
+文本参数： text  此参数支持写多行字符串  其子参数包括name、defaultValue及description。	
+指定构建过程中所需要的文件
+例子：pipeline {
+      agent any 
+	  parametes {
+	     text(name:'xx',defaultValue:'xx',description:'xxxx')
+		 }
+}
+
+
+
+选择参数： choice  用户从多个选项中选择一个值来表示变量的值 其子参数为name、choices及description。
+这里的choices指的是你所输入的以换行符分隔的展示给用户的选项列表。列表中的第一个值会作为默认值
+例子：pipeline{
+       agent any 
+	   parameters{
+	      choice(
+		     name:'mode1',
+			 choice:['x1','x2','x3'],
+			 description:'选择模块'
+			 )
+	   }
+}
+
+密码参数：password jenkins 参数化构建ui提供一个暗文密码输入框  注意：登录到服务器做自动化操作
+安全起见，不能用名为string 类型的参数，而是要用password 
+例子：pipeline {
+      agent any 
+	  parameters{
+	      password(
+		     name:'password',
+			 defaultValue:'test',
+			 description:'a password'
+		  ) 
+	  }
+}
+
+
+parameters组合使用：
+pipeline {
+  agent any
+  parameters {
+    choice(
+      name: 'model',
+      choices: ['m1', 'm2', 'm3'],
+      description: '选择模块'
+    )
+ 
+    string(
+        name: 'hostname',
+        defaultValue: '192.168.1.11',
+        description: '主机地址'
+    )
+ 
+    text(
+        name: 'remark',
+        defaultValue: 'name: ada \n \
+                sex: woman \n \
+                age: 30',
+        description: '个人信息'
+    )
+ 
+    booleanParam(
+        name: 'is_test',
+        defaultValue: true,
+        description: '是否需要测试'
+    )
+ 
+    password(
+        name: 'password',
+        defaultValue: 'ada',
+        description: '密码'
+    )
+ 
+    file(
+        name: "config_file",
+        description: "选择配置文件"
+    )
+  }
+ 
+  stages {
+        stage('构建') {
+            steps {
+                echo "构建 stage: 建模块为 : ${params.model} ..."
+            }
+        }
+        stage('测试'){
+            steps {
+                echo "测试 stage: 测试: ${params.is_test} ..."
+            }
+        }
+        stage('部署') {
+            steps {
+                echo "部署 stage: 主机名 : ${params.hostname} ..."
+                echo "部署 stage: 密码 : ${params.password} ..."
+                echo "部署 stage: 个人信息 : ${params.remark} ..."
+            }
+        }
+  }
+}
+
+tool:定义安装和放置工具的路径 此指令主要是为了三大工具（jdk，gradle.maven ）
+一旦配置完成，tools 指令可以让我们指定的工具需要在我们已经选择的代理节点上自动安装在配置路径下
+例子：pipeLine{
+       agent any 
+	   tools{
+	      jdk 'jdk1.8'
+	   }
+	  stages{
+	     stage('test'){
+		   steps{
+		      sh 'java -verison'
+		   }
+		 }
+	  }
+}
+
+说明：tools 工具 左侧的是流水线模型中定义的特殊字符串，
+目前，在声明式流水线中可以指定的合法的工具类型如下
+:ant、git、gradle、jdk、maven、jgit 等。
+ 右侧的jdk1.8的映射全局工具配置的名称字段（管理 Jenkins → Global ToolConfiguration 中预配置）
+ 一旦这样设置后，jdk 工具会被自动安装到指定的路径下，然后我们可以在流水线步骤中简单的使用  jdk1.8 字符串替代 JAVA_HOME 路径，Jenkins 会把它映射到我们系统中安装的 JDK。
+	如果需要输入一个特定的版本来使用，这个 tools 指令可以使用一个参数的值
+例子：pipeline{
+    agent any
+    parameters {
+        string(name: 'gradleTool', defaultValue: 'gradle3', description: 'gradle version')
+    }
+    tools{
+        gradle "${params.gradleTool}"
+    }
+}
+注意：当前语句需手动构建一次
+
+
+when；when{…} 是写在 stage{…} 里面一层条件控制，允许 pipeline 根据给定的条件来决定是否执行某个阶段。when 指令必须至少包含一个条件，也可以含多个条件，
+这与子条件嵌套在一个 allOf 条件中一样
+when 的条件结构可嵌套的参数：brand, environment,expression,not,allof,anyof,buildingTag
+   
+   brand(分支)：当正在构建的分支与给出的分支模式匹配时执行，注意：这个只适用于多分支的pipeline
+   例子： when{brand 'master'}
+   
+   environment(环境变量):当指定的环境变量与给定的值相同时执行
+   例子：when{environment name:'DEPLOY_TO',value:'production'}
+   
+   expression():当给定的 Groovy 表达式返回 true 时执行
+   例子：when { expression { return params.DEBUG_BUILD } }
+   not：当嵌套条件为false时执行，必须包含一个条件
+   例子：when { not { branch 'master' }}
+   allOf 当所有嵌套条件都为真时执行，必须至少包含一个条件
+   例子：when{
+           allOf {
+		   branch 'master';
+		      environment name: 'DEPLOY_TO'
+			  vale: 'production'
+		   }
+   }
+   
+   
+   anyOf 当至少一个嵌套条件为真时执行，必须至少包含一个条件
+   例子： when{ anyOf {branch 'master'; branch 'staging'}}
+   
+   
+   buildingTag 如果Pipeline 所执行的
+   
+   
+   
+   
+   

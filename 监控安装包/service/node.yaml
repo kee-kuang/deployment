@@ -1,0 +1,4 @@
+- targets:
+  - 10.0.1.133:1880
+  labels:
+    app: node_exporter

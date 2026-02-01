@@ -1,0 +1,56 @@
+---
+- name: Install and configure Filebeat
+  hosts: all
+  become: yes
+  tasks:
+    - name: Import Elasticsearch GPG key
+      ansible.builtin.command:
+        cmd: rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      ignore_errors: yes
+
+    - name: Add Elasticsearch YUM repository
+      ansible.builtin.copy:
+        dest: /etc/yum.repos.d/elastic.repo
+        content: |
+          [elastic-7.x]
+          name=Elastic repository for 7.x packages
+          baseurl=https://artifacts.elastic.co/packages/7.x/yum
+          gpgcheck=1
+          gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+          enabled=1
+          autorefresh=1
+          type=rpm-md
+      ignore_errors: yes
+
+    - name: Install Filebeat
+      ansible.builtin.yum:
+        name: filebeat
+        state: present
+      ignore_errors: yes
+
+    - name: Configure Filebeat
+      ansible.builtin.copy:
+        dest: /etc/filebeat/filebeat.yml
+        content: |
+          filebeat.inputs:
+            - type: log
+              paths:
+                - /www/yuetougz.com/sucai/sucai-cms-backend/storage/logs/queue/*.log
+                - /www/yuetougz.com/sucai/sucai-cms-backend/storage/logs/laravel.log
+              fields:
+                log_type: laravel
+              fields_under_root: true
+              multiline.pattern: '^\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\]'  # 匹配 [YYYY-MM-DD HH:MM:SS] 格式的时间戳
+              multiline.negate: true
+              multiline.match: after
+          output.logstash:
+            hosts:
+              - "183.6.106.208:5044"
+      ignore_errors: yes
+
+    - name: Ensure Filebeat is enabled and started
+      ansible.builtin.service:
+        name: filebeat
+        state: started
+        enabled: true
+      ignore_errors: yes

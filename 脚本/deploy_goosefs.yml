@@ -1,0 +1,125 @@
+---
+- name: 部署腾讯云 GooseFS-Lite 到 /opt 并配置开机挂载
+  hosts: servers
+  become: yes
+  vars:
+    # ---------------- COS 配置 ----------------
+    cos_secret_id: "AKIDbBbnmaSHvqcBfy74oMhohNr8D5mFUVP9"
+    cos_secret_key: "bzBC0ax65tUu89wWs2zjFZgaHk2PgkdJ"
+    cos_region: "ap-guangzhou"  
+    bucket_uri: "cosn://jishubu-1392049403/"
+    
+    # ---------------- 基础配置 ----------------
+    goosefs_version: "1.0.6"
+    mount_point: "/cos"
+    
+    # [关键修改] 定义安装的主目录，方便后续调用
+    goosefs_home: "/opt/goosefs-lite-{{ goosefs_version }}"
+    
+    # ---------------- Java 配置 ----------------
+    java_opts: "-Xms2G -Xmx4G -XX:MaxDirectMemorySize=1G -XX:+UseG1GC -XX:G1HeapRegionSize=32m"
+    
+    # ---------------- 下载地址 ----------------
+    jdk_download_url: "https://github.com/Tencent/TencentKona-11/releases/download/kona11.0.22/TencentKona-11.0.22.b1-jdk_linux-x86_64.tar.gz"
+    install_script_url: "https://downloads.tencentgoosefs.cn/goosefs-lite/install.sh"
+
+  tasks:
+    # 1. 安装系统依赖
+    - name: 安装依赖 (CentOS/RedHat)
+      yum:
+        name: fuse-devel
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: 安装依赖 (Ubuntu/Debian)
+      apt:
+        name: libfuse-dev
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    # 2. 安装 GooseFS-Lite 到 /opt
+    - name: 切换到 /opt 并下载执行安装脚本
+      shell: "curl -fssL {{ install_script_url }} | sh"
+      args:
+        chdir: "/opt"    # <--- [关键修改] 切换目录到 /opt，安装包会解压在这里
+        creates: "{{ goosefs_home }}"
+      register: install_result
+
+    - name: 检查安装路径是否存在
+      stat:
+        path: "{{ goosefs_home }}"
+      register: goose_path
+
+    - name: 失败报错
+      fail:
+        msg: "GooseFS 安装失败，未找到目录 {{ goosefs_home }}"
+      when: not goose_path.stat.exists
+
+    # 3. 安装 KonaJDK 11
+    - name: 安装 KonaJDK 11
+      shell: "bash bin/install-jdk.sh {{ jdk_download_url }}"
+      args:
+        chdir: "{{ goosefs_home }}" # [关键修改] 在 /opt 下的目录执行
+        creates: "{{ goosefs_home }}/konajdk11"
+
+    # 4. 修改配置文件 core-site.xml
+    - name: 配置 SecretID
+      replace:
+        path: "{{ goosefs_home }}/conf/core-site.xml" # [关键修改] 路径指向 /opt
+        regexp: '<name>fs.cosn.userinfo.secretId<\/name>\s*<value>.*<\/value>'
+        replace: '<name>fs.cosn.userinfo.secretId</name><value>{{ cos_secret_id }}</value>'
+
+    - name: 配置 SecretKey
+      replace:
+        path: "{{ goosefs_home }}/conf/core-site.xml"
+        regexp: '<name>fs.cosn.userinfo.secretKey<\/name>\s*<value>.*<\/value>'
+        replace: '<name>fs.cosn.userinfo.secretKey</name><value>{{ cos_secret_key }}</value>'
+
+    - name: 配置 Region
+      replace:
+        path: "{{ goosefs_home }}/conf/core-site.xml"
+        regexp: '<name>fs.cosn.bucket.region<\/name>\s*<value>.*<\/value>'
+        replace: '<name>fs.cosn.bucket.region</name><value>{{ cos_region }}</value>'
+
+    # 5. 配置 Systemd 开机自启与挂载
+    - name: 创建挂载点目录
+      file:
+        path: "{{ mount_point }}"
+        state: directory
+        mode: '0755'
+
+    - name: 创建 Systemd 服务文件
+      copy:
+        dest: /usr/lib/systemd/system/goosefs-lite.service
+        content: |
+          [Unit]
+          Description=The Tencent Cloud GooseFS Lite for COS
+          Requires=network-online.target
+          After=network-online.target
+
+          [Service]
+          Type=forking
+          User=root
+          Environment="JAVA_OPTS={{ java_opts }}"
+          ExecStart={{ goosefs_home }}/bin/goosefs-lite mount {{ mount_point }} {{ bucket_uri }}
+          ExecStop={{ goosefs_home }}/bin/goosefs-lite umount {{ mount_point }}
+          Restart=always
+          RestartSec=5
+
+          [Install]
+          WantedBy=multi-user.target
+      notify: 重启 GooseFS 服务
+
+    - name: 重新加载 Systemd 并设置开机自启
+      systemd:
+        name: goosefs-lite
+        daemon_reload: yes
+        enabled: yes
+        state: started
+
+  handlers:
+    - name: 重启 GooseFS 服务
+      systemd:
+        name: goosefs-lite
+        state: restarted

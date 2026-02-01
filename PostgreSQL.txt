@@ -1,0 +1,61 @@
+1、ps -elf | grep postgres  注意看是否有logger进程
+2、psql --version  查看版本
+3、日志审计：默认配置是在 /etc/postgresql/9.X/data(main)下，找到文件more postgresql.conf查看logging_collector 是否为on，log_directory = 日志路径; cd  pg_log 目录下 ll 查看 然后head -n XX.log；该文件还可以查看资源使用限度。
+4、检查远程连接：cd /opt/PostgreSQL/9.X/data  查看文件pg_hba.conf  注意# IPv4 local connections参数
+
+登录PG
+psql -h 127.0.0.1 -p 5432 -U postgres
+指定数据库
+psql -h 127.0.0.1 -p 5432 -U *** -d ***
+
+-U指定用户，-d指定数据库，-h指定服务器，-p指定端口
+
+select * from pg_shadow;查看所有用户密码
+select * from user_pwd;查看密码过期提醒
+select * from pg_authid;查看用户具有的角色
+select * from pg_stat_activity;查看数据库连接情况
+select pg_terminate_backend from pg_stat_activity；查看超时
+select rolconnlimit from pg_roles where rolname = 'postgres';查询用户链接限制
+select name,setting,unit,(source='default') as is_default from pg_settings；
+show max_connections，
+
+目前PostgreSQL在密码管理这块做得较弱：
+    PostgreSQL不支持密码过期策略,不支持密码复用策略,不支持密码长度策略(可以通过其他方式来实现强制密码长度策略),不支持密码复杂度策略, 不支持密码字典过滤策略,不支持密码锁策略(登录失败处理功能)，不支持密码保护策略(密码输入错误多少次后延迟认证. 可用来防止暴力破解)，
+
+有无使用passwordcheck、auth_delay模块
+
+postgresql的操作日志默认是关闭的，需要对数据库进行一定的配置后才可看到日志信息。日志存放目录一般在/PostgreSQL/9.2/data/pg_log
+PostgreSQL有3种日志，分别是pg_log（数据库运行日志）、pg_xlog（WAL 日志，即重做日志）、pg_clog（事务提交日志，记录的是事务的元数据）
+pg_log默认是关闭的，需要设置参数启用此日志。pg_xlog和pg_clog都是强制打开的，无法关闭。
+修改postgresql的配置文件postgresql.conf 存放目录：PostgreSQL/9.2/data
+1.启用pg_log并配置日志参数
+log_destination = 'csvlog'
+logging_collector = on
+log_directory = 'pg_log'
+log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
+log_rotation_age = 1d
+log_rotation_size = 100MB
+log_min_messages = info
+# 记录执行慢的SQL
+log_min_duration_statement = 60
+log_checkpoints = on
+log_connections = on
+log_disconnections = on
+log_duration = on
+log_line_prefix = '%m'
+# 监控数据库中长时间的锁
+log_lock_waits = on
+# 记录DDL操作
+log_statement = 'ddl'
+
+检查postgresql.conf文件中是否启用并合理配置pg_log日志审计
+logging_collector 是否开启日志收集开关，，默认off ,建议为on （开启要重启DB ）
+log_destination 日志记录类型，默认是stderr，只记录错误输出 ，建议为csvlog
+log_directory 日志路径，默认是$PGDATA/pg_log 
+log_filename 日志名称，默认是postgresql-%Y-%m-%d_%H%M%S.log 
+log_connections 用户session登陆时是否写入日志，默认off ,建议为on
+log_disconnections 用户session退出时是否写入日志，默认off ,建议为on 
+log_rotation_age 保留单个文件的最大时长,默认是1d 
+log_rotation_size 保留单个文件的最大尺寸，默认是10MB 建议100MB
+
+！！！postgresql.conf看这个配置文件！！！

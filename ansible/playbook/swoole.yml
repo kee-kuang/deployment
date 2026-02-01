@@ -1,0 +1,118 @@
+---
+- name: Install curl and swoole PHP extension
+  hosts: all
+  become: yes
+  vars:
+    curl_version: "8.7.1"
+    swoole_version: "5.1.7"
+    curl_prefix: "/usr/local/curl"
+    swoole_dir: "/opt/swoole"
+    php_bin: "/opt/remi/php82/root/usr/bin"
+  
+  tasks:
+    - name: Install required dependencies
+      yum:
+        name:
+          - gcc
+          - make
+          - pkgconfig
+          - libcurl-devel
+          - brotli-devel
+          - php-devel
+          - openssl-devel
+        state: present
+
+    - name: Check installed curl version
+      command: curl --version
+      register: curl_version_check
+      failed_when: false
+      changed_when: false
+
+    - name: Install curl if the version is lower than the required version
+      block:
+        - name: Download curl source
+          get_url:
+            url: "https://curl.se/download/curl-{{ curl_version }}.tar.gz"
+            dest: "/tmp/curl-{{ curl_version }}.tar.gz"
+
+        - name: Extract curl source
+          unarchive:
+            src: "/tmp/curl-{{ curl_version }}.tar.gz"
+            dest: "/tmp/"
+            creates: "/tmp/curl-{{ curl_version }}"
+
+        - name: Compile and install curl
+          command: |
+            cd /tmp/curl-{{ curl_version }}
+            ./configure --prefix={{ curl_prefix }} --with-ssl
+            make && make install
+          when: curl_version_check.stdout is search('libcurl') and ('7.56.0' not in curl_version_check.stdout)
+
+        - name: Backup original curl binary
+          command: mv /usr/bin/curl /usr/bin/curl.bak
+          when: curl_version_check.stdout is search('libcurl') and ('7.56.0' not in curl_version_check.stdout)
+
+        - name: Create symlink for new curl binary
+          command: ln -s /usr/local/curl/bin/curl /usr/bin/curl
+          when: curl_version_check.stdout is search('libcurl') and ('7.56.0' not in curl_version_check.stdout)
+
+    - name: Persist environment variables
+      copy:
+        dest: "/etc/profile.d/curl.sh"
+        content: |
+          export LD_LIBRARY_PATH={{ curl_prefix }}/lib:$LD_LIBRARY_PATH
+          export PKG_CONFIG_PATH={{ curl_prefix }}/lib/pkgconfig:$PKG_CONFIG_PATH
+
+    - name: Set correct permissions on curl.sh
+      file:
+        path: "/etc/profile.d/curl.sh"
+        mode: '0755'
+
+    - name: Source curl environment variables
+      shell: "source /etc/profile.d/curl.sh"
+      become: false
+
+    - name: Check if swoole is already installed
+      command: php --ri swoole
+      register: swoole_check
+      failed_when: false
+      changed_when: false
+
+    - name: Install swoole extension
+      block:
+        - name: Download swoole
+          get_url:
+            url: "https://pecl.php.net/get/swoole-{{ swoole_version }}.tgz"
+            dest: "/tmp/swoole-{{ swoole_version }}.tgz"
+
+        - name: Extract swoole
+          unarchive:
+            src: "/tmp/swoole-{{ swoole_version }}.tgz"
+            dest: "/tmp/"
+            creates: "/tmp/swoole-{{ swoole_version }}"
+
+        - name: Run phpize
+          command: "{{ php_bin }}/phpize"
+          args:
+            chdir: "/tmp/swoole-{{ swoole_version }}"
+
+        - name: Configure swoole with php
+          command: |
+            ./configure --with-php-config={{ php_bin }}/php-config --prefix={{ swoole_dir }} --enable-swoole-curl --enable-openssl --enable-sockets
+          args:
+            chdir: "/tmp/swoole-{{ swoole_version }}"
+
+        - name: Install swoole extension
+          command: make && make install
+          args:
+            chdir: "/tmp/swoole-{{ swoole_version }}"
+
+    - name: Verify swoole installation
+      command: php --ri swoole
+      register: swoole_installation
+      failed_when: false
+      changed_when: false
+
+    - name: Print swoole info
+      debug:
+        msg: "{{ swoole_installation.stdout }}"

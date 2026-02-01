@@ -1,0 +1,9 @@
+{
+    "accessToken": "pt-jeWqrQnWONZlO1mKgVdFFdfr_a421ae1c-91f1-44d5-ad70-ba1a6d345bf8",
+    "organizationId": "677fa072d530afe31a8739b4",
+    "db_host": "rm-wz92wh6ma25r5u8v6yo.mysql.rds.aliyuncs.com",
+    "db_port": 3306,
+    "db_user": "cid_test",
+    "db_password": "2P8ZiVb20Yna3DV1@",
+    "db_name": "codeup_sync"
+} 

@@ -1,0 +1,74 @@
+---
+- name: 自动检测并配置 SSH 免密（智能过滤）
+  hosts: localhost
+  gather_facts: no
+  vars_prompt:
+    - name: "new_machine_password"
+      prompt: "8QyMLyhDfvZdLPnb@"
+      private: yes
+  vars:
+    # 修改为你的公钥路径
+    pub_key_file: "/root/.ssh/id_ed25519.pub"
+    target_group: "servers"  # 你 inventory 中的组名
+
+  tasks:
+    - name: 检查公钥文件是否存在
+      stat:
+        path: "{{ pub_key_file }}"
+      register: key_stat
+
+    - name: 报错终止
+      fail:
+        msg: "公钥文件 {{ pub_key_file }} 不存在，请先生成！"
+      when: not key_stat.stat.exists
+
+    - name: 正在检测所有服务器的连通性...
+      # 使用 shell 在本地尝试 SSH 连接，-o BatchMode=yes 确保不会弹出密码输入框，直接失败
+      command: >
+        ssh -o BatchMode=yes -o ConnectTimeout=3 -o StrictHostKeyChecking=no 
+        -i /root/.ssh/id_ed25519 
+        {{ hostvars[item].ansible_user }}@{{ hostvars[item].ansible_host }} "echo success"
+      register: ssh_check
+      ignore_errors: yes
+      changed_when: false
+      with_items: "{{ groups[target_group] }}"
+      # 这里的 item 就是 inventory 中的主机别名（如 work01, test 等）
+
+    - name: 将无法连通的机器加入临时组 [need_keys]
+      add_host:
+        name: "{{ item.item }}"
+        groups: need_keys
+        ansible_host: "{{ hostvars[item.item].ansible_host }}"
+        ansible_user: "{{ hostvars[item.item].ansible_user }}"
+        # 将刚才输入的密码赋值给这个临时组
+        ansible_ssh_pass: "{{ new_machine_password }}"
+        # 首次连接必须禁用指纹检查
+        ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+      # 只筛选出 return code 不为 0 (连接失败) 的主机
+      when: item.rc != 0
+      with_items: "{{ ssh_check.results }}"
+
+    - name: 显示检测结果
+      debug:
+        msg: "共有 {{ groups[target_group] | length }} 台机器。其中 {{ groups['need_keys'] | default([]) | length }} 台需要配置免密。"
+
+# ---------------------------------------------------------
+# 下面这个 Play 只会针对被筛选出来的 [need_keys] 组运行
+# ---------------------------------------------------------
+- name: 对新机器执行推公钥操作
+  hosts: need_keys
+  gather_facts: no
+  vars:
+    pub_key_file: "/root/.ssh/id_ed25519.pub"
+
+  tasks:
+    - name: 推送 SSH 公钥
+      authorized_key:
+        user: "{{ ansible_user }}"
+        key: "{{ lookup('file', pub_key_file) }}"
+        state: present
+      register: push_result
+
+    - name: 结果通知
+      debug:
+        msg: "成功将公钥推送到: {{ inventory_hostname }} ({{ ansible_host }})"

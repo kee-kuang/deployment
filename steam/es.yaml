@@ -1,0 +1,4 @@
+- targets: ["10.0.1.119:9114"]
+  labels:
+    app: elasticsearch_exporter
+    

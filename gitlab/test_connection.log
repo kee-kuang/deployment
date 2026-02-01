@@ -1,0 +1,89 @@
+2025-04-25 17:49:45,179 - INFO - 测试API端点: https://codeup.aliyun.com/api/v4
+2025-04-25 17:49:45,987 - INFO - API端点测试结果: 状态码 200
+2025-04-25 17:49:45,987 - INFO - 响应内容: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:49:45,988 - INFO - 测试Access Token: pt-jeWqrQn...
+2025-04-25 17:49:46,522 - INFO - Access Token测试结果: 状态码 200
+2025-04-25 17:49:46,522 - INFO - 用户信息: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:49:46,523 - INFO - 测试获取项目列表API: https://codeup.aliyun.com/api/v4/projects?simple=true
+2025-04-25 17:49:47,032 - INFO - 获取项目列表结果: 状态码 200
+2025-04-25 17:49:47,033 - ERROR - 解析项目列表JSON失败: Expecting value: line 1 column 1 (char 0)
+2025-04-25 17:49:47,033 - ERROR - 响应内容: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:49:47,034 - ERROR - 获取项目列表测试失败，请检查API权限
+2025-04-25 17:50:59,034 - INFO - 测试API端点: https://codeup.aliyun.com/api/v4
+2025-04-25 17:50:59,525 - INFO - API端点测试结果: 状态码 200
+2025-04-25 17:50:59,525 - INFO - 响应内容: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:50:59,526 - INFO - 测试Access Token: pt-jeWqrQn...
+2025-04-25 17:50:59,971 - INFO - Access Token测试结果: 状态码 200
+2025-04-25 17:50:59,971 - INFO - 用户信息: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:50:59,972 - INFO - 测试获取项目列表API: https://codeup.aliyun.com/api/v4/projects?simple=true
+2025-04-25 17:51:00,535 - INFO - 获取项目列表结果: 状态码 200
+2025-04-25 17:51:00,536 - ERROR - 解析项目列表JSON失败: Expecting value: line 1 column 1 (char 0)
+2025-04-25 17:51:00,536 - ERROR - 响应内容: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:51:00,537 - ERROR - 获取项目列表测试失败，请检查API权限
+2025-04-25 17:51:55,285 - INFO - 测试API端点: https://codeup.aliyun.com/api/v4
+2025-04-25 17:51:55,801 - INFO - API端点测试结果: 状态码 200
+2025-04-25 17:51:55,801 - INFO - 响应内容: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:51:55,802 - INFO - 测试Access Token: pt-jeWqrQn...
+2025-04-25 17:51:56,355 - INFO - Access Token测试结果: 状态码 200
+2025-04-25 17:51:56,356 - INFO - 用户信息: <!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edg...
+2025-04-25 17:51:56,360 - INFO - 尝试API路径: https://codeup.aliyun.com/api/v4/projects
+2025-04-25 17:51:56,937 - INFO - 结果: 状态码 200
+2025-04-25 17:51:56,938 - WARNING - 路径 /projects 返回非JSON数据，尝试下一个路径
+2025-04-25 17:51:56,938 - INFO - 尝试API路径: https://codeup.aliyun.com/api/v4/projects?simple=true
+2025-04-25 17:51:57,433 - INFO - 结果: 状态码 200
+2025-04-25 17:51:57,433 - WARNING - 路径 /projects?simple=true 返回非JSON数据，尝试下一个路径
+2025-04-25 17:51:57,434 - INFO - 尝试API路径: https://codeup.aliyun.com/api/v4/groups
+2025-04-25 17:51:58,020 - INFO - 结果: 状态码 200
+2025-04-25 17:51:58,020 - WARNING - 路径 /groups 返回非JSON数据，尝试下一个路径
+2025-04-25 17:51:58,021 - INFO - 尝试API路径: https://codeup.aliyun.com/api/v4/user/projects
+2025-04-25 17:52:03,262 - WARNING - 路径 /user/projects 请求异常: HTTPSConnectionPool(host='account-devops.aliyun.com', port=443): Max retries exceeded with url: /login?next_url=https%3A%2F%2Fcodeup.aliyun.com%2Fapi%2Fv4%2Fuser%2Fprojects%3FappId%3D5e730cf2201d20d717988e46 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)')))
+2025-04-25 17:52:03,263 - ERROR - 所有API路径测试均失败
+2025-04-25 17:52:03,263 - ERROR - 获取项目列表测试失败，请检查API权限

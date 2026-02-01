@@ -1,11 +1,15 @@
 filebeat.inputs:
   - type: log
     paths:
-      - /data/logs/*.log
-    multiline.pattern: '^\d{4}-\d{2}-\d{2}'  # 以日期开头的行作为新的日志开始
-    multiline.negate: true  # 不匹配模式的行会被合并到前一行
-    multiline.match: after  # 匹配后续行
+      - /www/yuetougz.com/sucai/sucai-cms-backend/storage/logs/queue/*.log
+      - /www/yuetougz.com/sucai/sucai-cms-backend/storage/logs/laravel.log
+    fields:
+      log_type: laravel
+    fields_under_root: true
+    multiline.pattern: '^\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\]'  
+    multiline.negate: true
+    multiline.match: after
 
 output.logstash:
   hosts:
-    - "10.0.1.93:5046"
+    - "183.6.106.208:5044"

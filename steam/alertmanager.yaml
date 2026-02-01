@@ -1,0 +1,5 @@
+- targets:
+  - 10.0.1.119:9093
+  labels:
+    app: alertmanger-server
+

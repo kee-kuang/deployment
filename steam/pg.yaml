@@ -1,0 +1,4 @@
+- targets:
+  - 10.0.1.119:9187
+  labels:
+    app: postgres_exporter

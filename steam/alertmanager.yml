@@ -1,0 +1,34 @@
+global:
+  resolve_timeout: 5m
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 30m
+  receiver: 'webhook1'
+  routes:
+  - receiver: 'webhook1'
+    group_wait: 10s
+    continue: true
+    match_re:
+      type: ecs 
+templates:
+    - 'templates/*.tmpl'
+receivers:
+  - name: 'webhook1'
+    webhook_configs:
+      - url: 'http://10.0.1.119:8060/dingtalk/webhook1/send'
+        send_resolved: true
+  - name: 'wechat'
+    wechat_configs:
+      - send_resolved: true
+        agent_id: '1000004'
+        corp_id: 'ww6e7726dafdf19dc4' 
+        api_secret: '8hUDje6PmlPODi1iUxMf2PQbr7_y3g-uvMcS0_g0Z7I'
+        to_user: '@all'
+inhibit_rules:
+  - source_match:
+      severity: 'emergency'
+    target_match:
+      severity: 'critical'
+    equal: ['instance']

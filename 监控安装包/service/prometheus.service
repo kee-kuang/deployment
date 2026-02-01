@@ -1,0 +1,36 @@
+[Unit]
+Description=Prometheus
+After=network.target
+
+[Service]
+Type=simple
+Environment="GOMAXPROCS=4"
+#User=prometheus
+#Group=prometheus
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/data/prometheus/prometheus \
+  --config.file=/data/prometheus/prometheus.yml \
+  --storage.tsdb.path=/data/prometheus/data \
+  --storage.tsdb.retention=30d \
+  --web.console.libraries=/data/prometheus/console_libraries \
+  --web.console.templates=/data/prometheus/consoles \
+  --web.listen-address=0.0.0.0:9090 \
+  --web.read-timeout=5m \
+  --web.max-connections=10 \
+  --query.max-concurrency=20 \
+  --query.timeout=2m \
+  --web.enable-lifecycle
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+NoNewPrivileges=true
+LimitNOFILE=infinity
+ReadWriteDirectories=/data/prometheus
+ProtectSystem=full
+
+SyslogIdentifier=prometheus
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

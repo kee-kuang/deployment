@@ -1,0 +1,11 @@
+[Unit]
+Description=rabbitmq_exporter
+Documentation=https://prometheus.io/
+After=network.target
+[Service]
+Type=simple
+User=root
+ExecStart=/data/rabbitmq_exporter/rabbitmq_exporter -config-file /data/rabbitmq_exporter/config.example.json
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1084 @@
+2025-04-26 16:20:01,078 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:20:01,078 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:20:01,079 - __main__ - INFO - 成功加载配置
+2025-04-26 16:20:01,079 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:20:01,079 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:20:01,157 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 16:20:01,157 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 16:20:01,157 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 16:20:01,158 - __main__ - DEBUG - 发送请求到: https://devops.cn-hangzhou.aliyuncs.com/api/v1/repositories
+2025-04-26 16:20:01,158 - __main__ - DEBUG - 请求头: {'accept': 'application/json', 'date': 'Sat, 26 Apr 2025 08:20:01 GMT', 'host': 'devops.cn-hangzhou.aliyuncs.com', 'x-acs-signature-nonce': 'a08f573fc004475ea40ae1474d7bcd1d', 'x-acs-signature-method': 'HMAC-SHA1', 'x-acs-signature-version': '1.0', 'x-acs-version': '2021-06-25', 'content-type': 'application/x-www-form-urlencoded', 'x-acs-secure-transport': 'true', 'user-agent': 'AlibabaCloud API Workbench', 'authorization': 'Bearer pt-jeWqrQnWONZlO1mKgVdFFdfr_a421ae1c-91f1-44d5-ad70-ba1a6d345bf8'}
+2025-04-26 16:20:01,159 - __main__ - DEBUG - 请求参数: {'organizationId': '677fa072d530afe31a8739b4', 'pageSize': 100}
+2025-04-26 16:20:01,266 - __main__ - ERROR - API请求失败，状态码: 404
+2025-04-26 16:20:01,266 - __main__ - ERROR - 响应内容: {"RequestId":"488084CC-B8B1-54A6-B686-F62941306042","Message":"Specified api is not found, please check your url and method.","Recommend":"https://api.aliyun.com/troubleshoot?q=InvalidAction.NotFound&product=devops&requestId=488084CC-B8B1-54A6-B686-F62941306042","HostId":"devops.cn-hangzhou.aliyuncs.com","Code":"InvalidAction.NotFound"}
+2025-04-26 16:20:01,267 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 16:20:01,267 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 16:22:25,664 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:22:25,665 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:22:25,666 - __main__ - INFO - 成功加载配置
+2025-04-26 16:22:25,666 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:22:25,666 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:22:25,744 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 16:22:25,744 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 16:22:25,744 - __main__ - ERROR - 程序执行出错: name 'this' is not defined
+2025-04-26 16:22:25,747 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 268, in main
+    repositories = devops_client.get_repositories()
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 220, in get_repositories
+    this.logger.info("开始获取代码库列表...")
+    ^^^^
+NameError: name 'this' is not defined. Did you forget to import 'this'?
+
+2025-04-26 16:22:25,747 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 16:23:24,068 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:23:24,069 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:23:24,069 - __main__ - INFO - 成功加载配置
+2025-04-26 16:23:24,069 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:23:24,069 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:23:24,177 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 16:23:24,178 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 16:23:24,178 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 16:23:24,178 - asyncio - DEBUG - Using proactor: IocpProactor
+2025-04-26 16:23:24,179 - tzlocal - DEBUG - Looking up time zone info from registry
+2025-04-26 16:23:24,182 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-26 16:23:24,182 - apscheduler.scheduler - INFO - Added job "EcsRamRoleCredentialsProvider.__init__.<locals>.refresh_task" to job store "default"
+2025-04-26 16:23:24,183 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-26 16:23:24,183 - apscheduler.scheduler - DEBUG - Looking for jobs to run
+2025-04-26 16:23:24,183 - __main__ - ERROR - 获取代码库列表时发生错误: ListRepositoriesRequest.__init__() got an unexpected keyword argument 'page_size'
+2025-04-26 16:23:24,183 - apscheduler.scheduler - DEBUG - Next wakeup is due at 2025-04-26 16:24:24.182294+08:00 (in 59.998494 seconds)
+2025-04-26 16:23:24,184 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 223, in get_repositories
+    request = devops_20210625_models.ListRepositoriesRequest(
+        organization_id=self.org_id,
+        access_token=self.access_token,
+        page_size=100
+    )
+TypeError: ListRepositoriesRequest.__init__() got an unexpected keyword argument 'page_size'
+
+2025-04-26 16:23:24,185 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 16:23:24,185 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 16:23:24,185 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 16:25:05,638 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:25:05,638 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:25:05,639 - __main__ - INFO - 成功加载配置
+2025-04-26 16:25:05,639 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:25:05,639 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:25:05,697 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 16:25:05,698 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 16:25:05,698 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 16:25:05,698 - asyncio - DEBUG - Using proactor: IocpProactor
+2025-04-26 16:25:05,699 - tzlocal - DEBUG - Looking up time zone info from registry
+2025-04-26 16:25:05,702 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-26 16:25:05,702 - apscheduler.scheduler - INFO - Added job "EcsRamRoleCredentialsProvider.__init__.<locals>.refresh_task" to job store "default"
+2025-04-26 16:25:05,702 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-26 16:25:05,703 - apscheduler.scheduler - DEBUG - Looking for jobs to run
+2025-04-26 16:25:05,703 - __main__ - DEBUG - 检查ListRepositoriesRequest参数...
+2025-04-26 16:25:05,703 - apscheduler.scheduler - DEBUG - Next wakeup is due at 2025-04-26 16:26:05.702214+08:00 (in 59.998808 seconds)
+2025-04-26 16:25:05,703 - __main__ - WARNING - 不支持分页参数，将使用默认值
+2025-04-26 16:25:05,703 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 16:25:05,704 - alibabacloud_credentials.provider.refreshable - DEBUG - Refreshing synchronously
+2025-04-26 16:25:07,797 - alibabacloud_credentials.provider.refreshable - WARNING - Refresh credentials failed, cached value is None, error: HTTPConnectionPool(host='100.100.100.200', port=80): Max retries exceeded with url: /latest/meta-data/ram/security-credentials/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)'))
+2025-04-26 16:25:07,798 - alibabacloud_credentials.provider.refreshable - ERROR - HTTPConnectionPool(host='100.100.100.200', port=80): Max retries exceeded with url: /latest/meta-data/ram/security-credentials/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)'))
+Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 445, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 276, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+    ...<2 lines>...
+    ) from e
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='100.100.100.200', port=80): Max retries exceeded with url: /latest/meta-data/ram/security-credentials/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\Tea\core.py", line 281, in do_action
+    resp = session.send(
+        p,
+    ...<3 lines>...
+        cert=cert,
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 688, in send
+    raise ConnectTimeout(e, request=request)
+requests.exceptions.ConnectTimeout: HTTPConnectionPool(host='100.100.100.200', port=80): Max retries exceeded with url: /latest/meta-data/ram/security-credentials/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_credentials\provider\refreshable.py", line 208, in _refresh_cache
+    self._cached_value = self._handle_fetched_success(self._refresh_callable())
+                                                      ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_credentials\provider\ecs_ram_role.py", line 156, in _refresh_credentials
+    role_name = self._get_role_name(url)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_credentials\provider\ecs_ram_role.py", line 97, in _get_role_name
+    response = TeaCore.do_action(tea_request, self._runtime_options)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\Tea\core.py", line 289, in do_action
+    raise RetryError(str(e))
+Tea.exceptions.RetryError: HTTPConnectionPool(host='100.100.100.200', port=80): Max retries exceeded with url: /latest/meta-data/ram/security-credentials/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)'))
+2025-04-26 16:25:07,808 - __main__ - ERROR - 获取代码库列表时发生错误: unable to load credentials from any of the providers in the chain: ['EnvironmentVariableCredentialsProvider: Environment variable accessKeyId cannot be empty', 'CLIProfileCredentialsProvider: unable to open credentials file: \\Users\\C\\.aliyun/config.json', 'ProfileCredentialsProvider: failed to get credential from credentials file: $\\Users\\C\\.alibabacloud/credentials.ini', "EcsRamRoleCredentialsProvider: HTTPConnectionPool(host='100.100.100.200', port=80): Max retries exceeded with url: /latest/meta-data/ram/security-credentials/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)'))"]
+2025-04-26 16:25:07,816 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 260, in get_repositories
+    response = client.list_repositories_with_options(request, headers, runtime)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_devops20210625\client.py", line 21130, in list_repositories_with_options
+    self.call_api(params, req, runtime)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 2060, in call_api
+    return self.do_request(params, request, runtime)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1530, in do_request
+    raise e
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1442, in do_request
+    credential_model = self._credential.get_credential()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_credentials\client.py", line 107, in get_credential
+    return self.cloud_credential.get_credential()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_credentials\client.py", line 65, in get_credential
+    credential = self.provider.get_credentials()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_credentials\provider\default.py", line 57, in get_credentials
+    raise CredentialException(
+        f'unable to load credentials from any of the providers in the chain: {error_messages}')
+alibabacloud_credentials.exceptions.CredentialException: unable to load credentials from any of the providers in the chain: ['EnvironmentVariableCredentialsProvider: Environment variable accessKeyId cannot be empty', 'CLIProfileCredentialsProvider: unable to open credentials file: \\Users\\C\\.aliyun/config.json', 'ProfileCredentialsProvider: failed to get credential from credentials file: $\\Users\\C\\.alibabacloud/credentials.ini', "EcsRamRoleCredentialsProvider: HTTPConnectionPool(host='100.100.100.200', port=80): Max retries exceeded with url: /latest/meta-data/ram/security-credentials/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x0000029FBA7374D0>, 'Connection to 100.100.100.200 timed out. (connect timeout=1.0)'))"]
+
+2025-04-26 16:25:07,818 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 16:25:07,818 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 16:25:07,818 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 16:35:51,429 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:35:51,429 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:35:51,429 - __main__ - INFO - 成功加载配置
+2025-04-26 16:35:51,430 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:35:51,430 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:35:51,484 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 16:35:51,484 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 16:35:51,485 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 16:35:51,485 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 16:35:51,485 - __main__ - ERROR - 获取代码库列表时发生错误: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+2025-04-26 16:35:51,494 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 245, in get_repositories
+    response = client.list_repositories_with_options(request, headers, runtime)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_devops20210625\client.py", line 21130, in list_repositories_with_options
+    self.call_api(params, req, runtime)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 2060, in call_api
+    return self.do_request(params, request, runtime)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1530, in do_request
+    raise e
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1438, in do_request
+    raise TeaException({
+    ...<2 lines>...
+    })
+Tea.exceptions.TeaException: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+
+2025-04-26 16:35:51,495 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 16:35:51,495 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 16:35:51,495 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 16:45:34,708 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:45:34,709 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:45:34,709 - __main__ - INFO - 成功加载配置
+2025-04-26 16:45:34,709 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:45:34,709 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:45:34,774 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 16:45:34,775 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 16:45:34,775 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 16:45:34,775 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 16:45:34,775 - __main__ - ERROR - 获取代码库列表时发生错误: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+2025-04-26 16:45:34,784 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 246, in get_repositories
+    response = client.list_repositories_with_options(request, headers, runtime)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_devops20210625\client.py", line 21130, in list_repositories_with_options
+    self.call_api(params, req, runtime)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 2060, in call_api
+    return self.do_request(params, request, runtime)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1530, in do_request
+    raise e
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1438, in do_request
+    raise TeaException({
+    ...<2 lines>...
+    })
+Tea.exceptions.TeaException: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+
+2025-04-26 16:45:34,785 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 16:45:34,785 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 16:45:34,785 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 16:50:50,590 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:50:50,590 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:50:50,591 - __main__ - INFO - 成功加载配置
+2025-04-26 16:50:50,591 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:50:50,591 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:50:50,628 - __main__ - ERROR - 创建数据库连接失败: (1044, "Access denied for user 'cid_test'@'%' to database 'devops_sync'")
+2025-04-26 16:50:50,630 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1044, "Access denied for user 'cid_test'@'%' to database 'devops_sync'")
+
+2025-04-26 16:50:50,632 - __main__ - ERROR - 初始化数据库表结构失败: (1044, "Access denied for user 'cid_test'@'%' to database 'devops_sync'")
+2025-04-26 16:50:50,635 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1044, "Access denied for user 'cid_test'@'%' to database 'devops_sync'")
+
+2025-04-26 16:50:50,636 - __main__ - ERROR - 程序执行出错: (1044, "Access denied for user 'cid_test'@'%' to database 'devops_sync'")
+2025-04-26 16:50:50,638 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 280, in main
+    db_manager.init_database()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1044, "Access denied for user 'cid_test'@'%' to database 'devops_sync'")
+
+2025-04-26 16:50:50,640 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 16:54:46,114 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 16:54:46,114 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 16:54:46,115 - __main__ - INFO - 成功加载配置
+2025-04-26 16:54:46,115 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 16:54:46,115 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 16:54:46,189 - __main__ - ERROR - 创建数据库连接失败: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+2025-04-26 16:54:46,191 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+
+2025-04-26 16:54:46,193 - __main__ - ERROR - 初始化数据库表结构失败: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+2025-04-26 16:54:46,195 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+
+2025-04-26 16:54:46,197 - __main__ - ERROR - 程序执行出错: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+2025-04-26 16:54:46,198 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 280, in main
+    db_manager.init_database()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+
+2025-04-26 16:54:46,200 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:18:28,437 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:18:28,437 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:18:28,438 - __main__ - INFO - 成功加载配置
+2025-04-26 17:18:28,438 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:18:28,438 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:18:28,467 - __main__ - ERROR - 创建数据库连接失败: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+2025-04-26 17:18:28,469 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+
+2025-04-26 17:18:28,471 - __main__ - ERROR - 初始化数据库表结构失败: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+2025-04-26 17:18:28,472 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+
+2025-04-26 17:18:28,474 - __main__ - ERROR - 程序执行出错: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+2025-04-26 17:18:28,476 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 280, in main
+    db_manager.init_database()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'creative_gzyueto'@'113.108.148.154' (using password: YES)")
+
+2025-04-26 17:18:28,478 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:18:52,042 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:18:52,042 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:18:52,043 - __main__ - INFO - 成功加载配置
+2025-04-26 17:18:52,043 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:18:52,043 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:18:52,069 - __main__ - ERROR - 创建数据库连接失败: (1044, "Access denied for user 'sucai_cms'@'%' to database 'devops_sync'")
+2025-04-26 17:18:52,071 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1044, "Access denied for user 'sucai_cms'@'%' to database 'devops_sync'")
+
+2025-04-26 17:18:52,073 - __main__ - ERROR - 初始化数据库表结构失败: (1044, "Access denied for user 'sucai_cms'@'%' to database 'devops_sync'")
+2025-04-26 17:18:52,074 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1044, "Access denied for user 'sucai_cms'@'%' to database 'devops_sync'")
+
+2025-04-26 17:18:52,076 - __main__ - ERROR - 程序执行出错: (1044, "Access denied for user 'sucai_cms'@'%' to database 'devops_sync'")
+2025-04-26 17:18:52,077 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 280, in main
+    db_manager.init_database()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 669, in connect
+    self._request_authentication()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 957, in _request_authentication
+    auth_packet = self._read_packet()
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1044, "Access denied for user 'sucai_cms'@'%' to database 'devops_sync'")
+
+2025-04-26 17:18:52,079 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:22:26,426 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:22:26,426 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:22:26,427 - __main__ - INFO - 成功加载配置
+2025-04-26 17:22:26,427 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:22:26,427 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:22:36,448 - __main__ - ERROR - 创建数据库连接失败: (2003, "Can't connect to MySQL server on 'rm-wz92wh6ma25r5u8v6.mysql.rds.aliyuncs.com' (timed out)")
+2025-04-26 17:22:36,450 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 649, in connect
+    sock = socket.create_connection(
+        (self.host, self.port), self.connect_timeout, **kwargs
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 864, in create_connection
+    raise exceptions[0]
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 849, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 716, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'rm-wz92wh6ma25r5u8v6.mysql.rds.aliyuncs.com' (timed out)")
+
+2025-04-26 17:22:36,451 - __main__ - ERROR - 初始化数据库表结构失败: (2003, "Can't connect to MySQL server on 'rm-wz92wh6ma25r5u8v6.mysql.rds.aliyuncs.com' (timed out)")
+2025-04-26 17:22:36,453 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 649, in connect
+    sock = socket.create_connection(
+        (self.host, self.port), self.connect_timeout, **kwargs
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 864, in create_connection
+    raise exceptions[0]
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 849, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 716, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'rm-wz92wh6ma25r5u8v6.mysql.rds.aliyuncs.com' (timed out)")
+
+2025-04-26 17:22:36,454 - __main__ - ERROR - 程序执行出错: (2003, "Can't connect to MySQL server on 'rm-wz92wh6ma25r5u8v6.mysql.rds.aliyuncs.com' (timed out)")
+2025-04-26 17:22:36,456 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 649, in connect
+    sock = socket.create_connection(
+        (self.host, self.port), self.connect_timeout, **kwargs
+    )
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 864, in create_connection
+    raise exceptions[0]
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 849, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 280, in main
+    db_manager.init_database()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 115, in init_database
+    with self.create_connection() as conn:
+         ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 97, in create_connection
+    return pymysql.connect(
+           ~~~~~~~~~~~~~~~^
+        host=self.db_config['host'],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        cursorclass=pymysql.cursors.DictCursor
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 361, in __init__
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\pymysql\connections.py", line 716, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'rm-wz92wh6ma25r5u8v6.mysql.rds.aliyuncs.com' (timed out)")
+
+2025-04-26 17:22:36,458 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:23:01,598 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:23:01,599 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:23:01,599 - __main__ - INFO - 成功加载配置
+2025-04-26 17:23:01,599 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:23:01,600 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:23:01,677 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:23:01,677 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:23:01,677 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:23:01,678 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:23:02,224 - __main__ - ERROR - 获取代码库列表时发生错误: Error: SignatureDoesNotMatch code: 400, Specified signature does not match our calculation. server StringToSign is [ACS3-HMAC-SHA256
+85c65c1834f4bf8764e14c7ca29a5cb882c09ed71ed7da53c1cc9ebfebc85307], server CanonicalRequest is [GET
+/repository/list
+organizationId=677fa072d530afe31a8739b4
+accept:application/json
+authorization:ACS3-HMAC-SHA256 Credential=LTAI5tQuanaHZuZeB8NtjftM,SignedHeaders=accept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version,Signature=2ecc15bcad9c2b7175a40589ba38dd8a40a99377a8b6a7157c63f510c9259004
+content-type:application/json;charset=utf-8
+host:devops.cn-hangzhou.aliyuncs.com
+user-agent:AlibabaCloud (Windows; AMD64) Python/3.13.3 Core/0.4.3 TeaDSL/1
+x-acs-action:ListRepositories
+x-acs-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-acs-credentials-provider:static_ak
+x-acs-date:2025-04-26T09:23:01Z
+x-acs-signature-nonce:2ae6b4d9927a726485441d6dc2737e5e
+x-acs-version:2021-06-25
+
+accept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855] request id: 3E34332D-88E0-54FB-89CC-42E5C0353254 Response: {'RequestId': '3E34332D-88E0-54FB-89CC-42E5C0353254', 'Message': 'Specified signature does not match our calculation. server StringToSign is [ACS3-HMAC-SHA256\n85c65c1834f4bf8764e14c7ca29a5cb882c09ed71ed7da53c1cc9ebfebc85307], server CanonicalRequest is [GET\n/repository/list\norganizationId=677fa072d530afe31a8739b4\naccept:application/json\nauthorization:ACS3-HMAC-SHA256 Credential=LTAI5tQuanaHZuZeB8NtjftM,SignedHeaders=accept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version,Signature=2ecc15bcad9c2b7175a40589ba38dd8a40a99377a8b6a7157c63f510c9259004\ncontent-type:application/json;charset=utf-8\nhost:devops.cn-hangzhou.aliyuncs.com\nuser-agent:AlibabaCloud (Windows; AMD64) Python/3.13.3 Core/0.4.3 TeaDSL/1\nx-acs-action:ListRepositories\nx-acs-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nx-acs-credentials-provider:static_ak\nx-acs-date:2025-04-26T09:23:01Z\nx-acs-signature-nonce:2ae6b4d9927a726485441d6dc2737e5e\nx-acs-version:2021-06-25\n\naccept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855]', 'Recommend': 'https://api.aliyun.com/troubleshoot?q=SignatureDoesNotMatch&product=devops&requestId=3E34332D-88E0-54FB-89CC-42E5C0353254', 'HostId': 'devops.cn-hangzhou.aliyuncs.com', 'Code': 'SignatureDoesNotMatch', 'statusCode': 400}
+2025-04-26 17:23:02,234 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 250, in get_repositories
+    response = client.list_repositories_with_options(request, headers, runtime)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_devops20210625\client.py", line 21130, in list_repositories_with_options
+    self.call_api(params, req, runtime)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 2060, in call_api
+    return self.do_request(params, request, runtime)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1530, in do_request
+    raise e
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1476, in do_request
+    raise TeaException({
+    ...<5 lines>...
+    })
+Tea.exceptions.TeaException: Error: SignatureDoesNotMatch code: 400, Specified signature does not match our calculation. server StringToSign is [ACS3-HMAC-SHA256
+85c65c1834f4bf8764e14c7ca29a5cb882c09ed71ed7da53c1cc9ebfebc85307], server CanonicalRequest is [GET
+/repository/list
+organizationId=677fa072d530afe31a8739b4
+accept:application/json
+authorization:ACS3-HMAC-SHA256 Credential=LTAI5tQuanaHZuZeB8NtjftM,SignedHeaders=accept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version,Signature=2ecc15bcad9c2b7175a40589ba38dd8a40a99377a8b6a7157c63f510c9259004
+content-type:application/json;charset=utf-8
+host:devops.cn-hangzhou.aliyuncs.com
+user-agent:AlibabaCloud (Windows; AMD64) Python/3.13.3 Core/0.4.3 TeaDSL/1
+x-acs-action:ListRepositories
+x-acs-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+x-acs-credentials-provider:static_ak
+x-acs-date:2025-04-26T09:23:01Z
+x-acs-signature-nonce:2ae6b4d9927a726485441d6dc2737e5e
+x-acs-version:2021-06-25
+
+accept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855] request id: 3E34332D-88E0-54FB-89CC-42E5C0353254 Response: {'RequestId': '3E34332D-88E0-54FB-89CC-42E5C0353254', 'Message': 'Specified signature does not match our calculation. server StringToSign is [ACS3-HMAC-SHA256\n85c65c1834f4bf8764e14c7ca29a5cb882c09ed71ed7da53c1cc9ebfebc85307], server CanonicalRequest is [GET\n/repository/list\norganizationId=677fa072d530afe31a8739b4\naccept:application/json\nauthorization:ACS3-HMAC-SHA256 Credential=LTAI5tQuanaHZuZeB8NtjftM,SignedHeaders=accept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version,Signature=2ecc15bcad9c2b7175a40589ba38dd8a40a99377a8b6a7157c63f510c9259004\ncontent-type:application/json;charset=utf-8\nhost:devops.cn-hangzhou.aliyuncs.com\nuser-agent:AlibabaCloud (Windows; AMD64) Python/3.13.3 Core/0.4.3 TeaDSL/1\nx-acs-action:ListRepositories\nx-acs-content-sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\nx-acs-credentials-provider:static_ak\nx-acs-date:2025-04-26T09:23:01Z\nx-acs-signature-nonce:2ae6b4d9927a726485441d6dc2737e5e\nx-acs-version:2021-06-25\n\naccept;authorization;content-type;host;user-agent;x-acs-action;x-acs-content-sha256;x-acs-credentials-provider;x-acs-date;x-acs-signature-nonce;x-acs-version\ne3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855]', 'Recommend': 'https://api.aliyun.com/troubleshoot?q=SignatureDoesNotMatch&product=devops&requestId=3E34332D-88E0-54FB-89CC-42E5C0353254', 'HostId': 'devops.cn-hangzhou.aliyuncs.com', 'Code': 'SignatureDoesNotMatch', 'statusCode': 400}
+
+2025-04-26 17:23:02,236 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 17:23:02,236 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:23:02,237 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:24:22,394 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:24:22,394 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:24:22,395 - __main__ - INFO - 成功加载配置
+2025-04-26 17:24:22,395 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:24:22,395 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:24:22,441 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:24:22,441 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:24:22,442 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:24:22,442 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:24:22,442 - __main__ - ERROR - 获取代码库列表时发生错误: Client.list_repositories_with_options() missing 1 required positional argument: 'headers'
+2025-04-26 17:24:22,443 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 241, in get_repositories
+    response = client.list_repositories_with_options(request, runtime=runtime)
+TypeError: Client.list_repositories_with_options() missing 1 required positional argument: 'headers'
+
+2025-04-26 17:24:22,443 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 17:24:22,444 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:24:22,444 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:25:05,301 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:25:05,301 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:25:05,302 - __main__ - INFO - 成功加载配置
+2025-04-26 17:25:05,302 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:25:05,302 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:25:05,370 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:25:05,371 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:25:05,371 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:25:05,372 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:25:05,372 - __main__ - ERROR - 获取代码库列表时发生错误: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+2025-04-26 17:25:05,381 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 246, in get_repositories
+    response = client.list_repositories_with_options(request, headers, runtime)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_devops20210625\client.py", line 21130, in list_repositories_with_options
+    self.call_api(params, req, runtime)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 2060, in call_api
+    return self.do_request(params, request, runtime)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1530, in do_request
+    raise e
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1438, in do_request
+    raise TeaException({
+    ...<2 lines>...
+    })
+Tea.exceptions.TeaException: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+
+2025-04-26 17:25:05,382 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 17:25:05,383 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:25:05,383 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:28:24,040 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:28:24,040 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:28:24,040 - __main__ - INFO - 成功加载配置
+2025-04-26 17:28:24,041 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:28:24,041 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:28:24,116 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:28:24,117 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:28:24,117 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:28:24,117 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:28:24,117 - __main__ - ERROR - 获取代码库列表时发生错误: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+2025-04-26 17:28:24,126 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 246, in get_repositories
+    response = client.list_repositories_with_options(request, headers, runtime)
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_devops20210625\client.py", line 21130, in list_repositories_with_options
+    self.call_api(params, req, runtime)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 2060, in call_api
+    return self.do_request(params, request, runtime)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1530, in do_request
+    raise e
+  File "C:\Users\C\AppData\Local\Programs\Python\Python313\Lib\site-packages\alibabacloud_tea_openapi\client.py", line 1438, in do_request
+    raise TeaException({
+    ...<2 lines>...
+    })
+Tea.exceptions.TeaException: Error: InvalidCredentials Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details. Response: None
+
+2025-04-26 17:28:24,127 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 17:28:24,128 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:28:24,128 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:34:27,681 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:34:27,682 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:34:27,682 - __main__ - INFO - 成功加载配置
+2025-04-26 17:34:27,682 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:34:27,683 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:34:27,741 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:34:27,741 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:34:27,741 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:34:27,742 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:34:27,742 - __main__ - ERROR - 获取代码库列表时发生错误: Client.list_repositories_with_options() missing 1 required positional argument: 'headers'
+2025-04-26 17:34:27,743 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 242, in get_repositories
+    response = client.list_repositories_with_options(request, runtime=runtime)
+TypeError: Client.list_repositories_with_options() missing 1 required positional argument: 'headers'
+
+2025-04-26 17:34:27,743 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 17:34:27,743 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:34:27,743 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:34:58,523 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:34:58,523 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:34:58,524 - __main__ - INFO - 成功加载配置
+2025-04-26 17:34:58,524 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:34:58,524 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:34:58,595 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:34:58,596 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:34:58,596 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:34:58,596 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:34:59,232 - __main__ - ERROR - 获取代码库列表时发生错误: 'ListRepositoriesResponseBody' object has no attribute 'data'
+2025-04-26 17:34:59,233 - __main__ - ERROR - 错误详情: Traceback (most recent call last):
+  File "e:\部署文档\deployment\gitlab\ds\sync.devops.py", line 250, in get_repositories
+    repositories = response.body.data
+                   ^^^^^^^^^^^^^^^^^^
+AttributeError: 'ListRepositoriesResponseBody' object has no attribute 'data'
+
+2025-04-26 17:34:59,233 - __main__ - WARNING - 没有获取到代码库信息
+2025-04-26 17:34:59,233 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:34:59,234 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:36:00,647 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:36:00,648 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:36:00,648 - __main__ - INFO - 成功加载配置
+2025-04-26 17:36:00,648 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:36:00,649 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:36:00,707 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:36:00,707 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:36:00,707 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:36:00,708 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:36:01,264 - __main__ - DEBUG - API响应: {'requestId': 'ACE32B81-593D-56DA-89B0-F0884D4AC820', 'result': [{'Id': 5196641, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:25+08:00', 'name': 'sucai-admin-vue3ts', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-admin-vue3ts', 'namespaceId': 1558253, 'path': 'sucai-admin-vue3ts', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-admin-vue3ts', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-admin-vue3ts'}, {'Id': 5196638, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:09+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:09+08:00', 'name': 'framework', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / framework', 'namespaceId': 1558253, 'path': 'framework', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/framework', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:09+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/framework'}, {'Id': 5196637, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:05+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:05+08:00', 'name': 'sucai-center', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-center', 'namespaceId': 1558253, 'path': 'sucai-center', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-center', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:05+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-center'}, {'Id': 5196635, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:55+08:00', 'name': 'cid-admin-mobile-uni-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-mobile-uni-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-mobile-uni-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-mobile-uni-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-mobile-uni-vue2'}, {'Id': 5196633, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:38+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:38+08:00', 'name': 'cid-admin-client-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-client-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-client-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-client-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:38+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-client-vue2'}, {'Id': 5196632, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:34+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:34+08:00', 'name': 'ads-catch-data', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / ads-catch-data', 'namespaceId': 1558259, 'path': 'ads-catch-data', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/ads-catch-data', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:34+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/ads-catch-data'}, {'Id': 5196631, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:25+08:00', 'name': 'cid-backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / cid / cid-backend', 'namespaceId': 1558257, 'path': 'cid-backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/cid/cid-backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/cid/cid-backend'}, {'Id': 5196629, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:05+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:05+08:00', 'name': 'cid-fronted', 'nameWithNamespace': '677fa072d530afe31a8739b4 / cid / cid-fronted', 'namespaceId': 1558257, 'path': 'cid-fronted', 'pathWithNamespace': '677fa072d530afe31a8739b4/cid/cid-fronted', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:05+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/cid/cid-fronted'}, {'Id': 5196627, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:55+08:00', 'name': 'ytcid', 'nameWithNamespace': '677fa072d530afe31a8739b4 / zhou / ytcid', 'namespaceId': 1558264, 'path': 'ytcid', 'pathWithNamespace': '677fa072d530afe31a8739b4/zhou/ytcid', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/zhou/ytcid'}, {'Id': 5196625, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:38+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:38+08:00', 'name': 'sucai-center-bak', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-center-bak', 'namespaceId': 1558253, 'path': 'sucai-center-bak', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-center-bak', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:38+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-center-bak'}, {'Id': 5196624, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:34+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:34+08:00', 'name': 'houtai-backend-base', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / houtai-backend-base', 'namespaceId': 1558259, 'path': 'houtai-backend-base', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/houtai-backend-base', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:34+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/houtai-backend-base'}, {'Id': 5196622, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:31+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:31+08:00', 'name': 'hr-admin-laravel', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr-admin-laravel', 'namespaceId': 1558256, 'path': 'hr-admin-laravel', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr-admin-laravel', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:31+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr-admin-laravel'}, {'Id': 5196621, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:29+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:29+08:00', 'name': 'hr_admin_backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr_admin_backend', 'namespaceId': 1558256, 'path': 'hr_admin_backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr_admin_backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:29+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr_admin_backend'}, {'Id': 5196620, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:24+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:24+08:00', 'name': 'hr_backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr_backend', 'namespaceId': 1558256, 'path': 'hr_backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr_backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:24+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr_backend'}, {'Id': 5196618, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:08+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:08+08:00', 'name': 'houtai-base-vue3', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / houtai-base-vue3', 'namespaceId': 1558259, 'path': 'houtai-base-vue3', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/houtai-base-vue3', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:08+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/houtai-base-vue3'}, {'Id': 5196616, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:28+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:28+08:00', 'name': 'overseas', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / overseas', 'namespaceId': 1558253, 'path': 'overseas', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/overseas', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:28+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/overseas'}, {'Id': 5196615, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:25+08:00', 'name': 'cid-server', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-server', 'namespaceId': 1558259, 'path': 'cid-server', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-server', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-server'}, {'Id': 5196613, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:09+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:09+08:00', 'name': 'sucai-hw-cms-backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-hw-cms-backend', 'namespaceId': 1558253, 'path': 'sucai-hw-cms-backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-hw-cms-backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:09+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-hw-cms-backend'}, {'Id': 5196612, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:41:58+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:41:58+08:00', 'name': 'cid-admin-permit-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-permit-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-permit-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-permit-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:41:58+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-permit-vue2'}, {'Id': 5196611, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:41:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:41:55+08:00', 'name': 'cid-server-0929', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-server-0929', 'namespaceId': 1558259, 'path': 'cid-server-0929', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-server-0929', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:41:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-server-0929'}], 'success': True, 'total': 37}
+2025-04-26 17:36:01,268 - __main__ - INFO - 成功获取到代码库列表
+2025-04-26 17:36:01,268 - __main__ - INFO - 
+步骤4: 保存代码库信息到数据库...
+2025-04-26 17:36:01,268 - __main__ - INFO - 正在保存 20 个代码库信息到数据库...
+2025-04-26 17:36:01,472 - __main__ - INFO - 成功保存 20 个代码库信息到数据库
+2025-04-26 17:36:01,473 - __main__ - INFO - 成功存储 20 个代码库信息
+2025-04-26 17:36:01,473 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:36:01,474 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:41:15,789 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:41:15,789 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:41:15,790 - __main__ - INFO - 成功加载配置
+2025-04-26 17:41:15,790 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:41:15,790 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:41:15,856 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:41:15,856 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:41:15,857 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:41:15,857 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:41:16,409 - __main__ - DEBUG - API响应: {'requestId': '88565246-081F-542E-AB6D-DB3C26FBD55E', 'result': [{'Id': 5196641, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:25+08:00', 'name': 'sucai-admin-vue3ts', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-admin-vue3ts', 'namespaceId': 1558253, 'path': 'sucai-admin-vue3ts', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-admin-vue3ts', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-admin-vue3ts'}, {'Id': 5196638, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:09+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:09+08:00', 'name': 'framework', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / framework', 'namespaceId': 1558253, 'path': 'framework', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/framework', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:09+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/framework'}, {'Id': 5196637, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:05+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:05+08:00', 'name': 'sucai-center', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-center', 'namespaceId': 1558253, 'path': 'sucai-center', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-center', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:05+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-center'}, {'Id': 5196635, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:55+08:00', 'name': 'cid-admin-mobile-uni-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-mobile-uni-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-mobile-uni-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-mobile-uni-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-mobile-uni-vue2'}, {'Id': 5196633, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:38+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:38+08:00', 'name': 'cid-admin-client-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-client-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-client-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-client-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:38+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-client-vue2'}, {'Id': 5196632, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:34+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:34+08:00', 'name': 'ads-catch-data', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / ads-catch-data', 'namespaceId': 1558259, 'path': 'ads-catch-data', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/ads-catch-data', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:34+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/ads-catch-data'}, {'Id': 5196631, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:25+08:00', 'name': 'cid-backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / cid / cid-backend', 'namespaceId': 1558257, 'path': 'cid-backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/cid/cid-backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/cid/cid-backend'}, {'Id': 5196629, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:05+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:05+08:00', 'name': 'cid-fronted', 'nameWithNamespace': '677fa072d530afe31a8739b4 / cid / cid-fronted', 'namespaceId': 1558257, 'path': 'cid-fronted', 'pathWithNamespace': '677fa072d530afe31a8739b4/cid/cid-fronted', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:05+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/cid/cid-fronted'}, {'Id': 5196627, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:55+08:00', 'name': 'ytcid', 'nameWithNamespace': '677fa072d530afe31a8739b4 / zhou / ytcid', 'namespaceId': 1558264, 'path': 'ytcid', 'pathWithNamespace': '677fa072d530afe31a8739b4/zhou/ytcid', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/zhou/ytcid'}, {'Id': 5196625, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:38+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:38+08:00', 'name': 'sucai-center-bak', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-center-bak', 'namespaceId': 1558253, 'path': 'sucai-center-bak', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-center-bak', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:38+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-center-bak'}, {'Id': 5196624, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:34+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:34+08:00', 'name': 'houtai-backend-base', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / houtai-backend-base', 'namespaceId': 1558259, 'path': 'houtai-backend-base', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/houtai-backend-base', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:34+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/houtai-backend-base'}, {'Id': 5196622, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:31+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:31+08:00', 'name': 'hr-admin-laravel', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr-admin-laravel', 'namespaceId': 1558256, 'path': 'hr-admin-laravel', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr-admin-laravel', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:31+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr-admin-laravel'}, {'Id': 5196621, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:29+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:29+08:00', 'name': 'hr_admin_backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr_admin_backend', 'namespaceId': 1558256, 'path': 'hr_admin_backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr_admin_backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:29+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr_admin_backend'}, {'Id': 5196620, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:24+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:24+08:00', 'name': 'hr_backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr_backend', 'namespaceId': 1558256, 'path': 'hr_backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr_backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:24+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr_backend'}, {'Id': 5196618, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:08+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:08+08:00', 'name': 'houtai-base-vue3', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / houtai-base-vue3', 'namespaceId': 1558259, 'path': 'houtai-base-vue3', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/houtai-base-vue3', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:08+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/houtai-base-vue3'}, {'Id': 5196616, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:28+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:28+08:00', 'name': 'overseas', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / overseas', 'namespaceId': 1558253, 'path': 'overseas', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/overseas', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:28+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/overseas'}, {'Id': 5196615, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:25+08:00', 'name': 'cid-server', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-server', 'namespaceId': 1558259, 'path': 'cid-server', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-server', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-server'}, {'Id': 5196613, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:09+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:09+08:00', 'name': 'sucai-hw-cms-backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-hw-cms-backend', 'namespaceId': 1558253, 'path': 'sucai-hw-cms-backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-hw-cms-backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:09+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-hw-cms-backend'}, {'Id': 5196612, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:41:58+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:41:58+08:00', 'name': 'cid-admin-permit-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-permit-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-permit-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-permit-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:41:58+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-permit-vue2'}, {'Id': 5196611, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:41:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:41:55+08:00', 'name': 'cid-server-0929', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-server-0929', 'namespaceId': 1558259, 'path': 'cid-server-0929', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-server-0929', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:41:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-server-0929'}], 'success': True, 'total': 37}
+2025-04-26 17:41:16,413 - __main__ - INFO - 成功获取到代码库列表
+2025-04-26 17:41:16,413 - __main__ - INFO - 
+步骤4: 保存代码库信息到数据库...
+2025-04-26 17:41:16,413 - __main__ - INFO - 正在保存 20 个代码库信息到数据库...
+2025-04-26 17:41:16,637 - __main__ - INFO - 成功保存 20 个代码库信息到数据库
+2025-04-26 17:41:16,637 - __main__ - INFO - 成功存储 20 个代码库信息
+2025-04-26 17:41:16,637 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:41:16,638 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...
+2025-04-26 17:57:36,466 - __main__ - INFO - === 开始同步代码库 ===
+2025-04-26 17:57:36,467 - __main__ - INFO - 步骤1: 加载配置...
+2025-04-26 17:57:36,467 - __main__ - INFO - 成功加载配置
+2025-04-26 17:57:36,467 - __main__ - INFO - 
+步骤2: 初始化数据库...
+2025-04-26 17:57:36,468 - __main__ - INFO - 正在初始化数据库表结构...
+2025-04-26 17:57:36,544 - __main__ - INFO - 数据库表结构初始化成功
+2025-04-26 17:57:36,544 - __main__ - INFO - 
+步骤3: 获取代码库列表...
+2025-04-26 17:57:36,544 - __main__ - INFO - 开始获取代码库列表...
+2025-04-26 17:57:36,545 - __main__ - DEBUG - 发送请求，组织ID: 677fa072d530afe31a8739b4
+2025-04-26 17:57:37,122 - __main__ - DEBUG - API响应: {'requestId': '8BE22AE0-AE21-5759-83B2-64914B4829BF', 'result': [{'Id': 5196641, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:25+08:00', 'name': 'sucai-admin-vue3ts', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-admin-vue3ts', 'namespaceId': 1558253, 'path': 'sucai-admin-vue3ts', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-admin-vue3ts', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-admin-vue3ts'}, {'Id': 5196638, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:09+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:09+08:00', 'name': 'framework', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / framework', 'namespaceId': 1558253, 'path': 'framework', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/framework', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:09+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/framework'}, {'Id': 5196637, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:45:05+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:45:05+08:00', 'name': 'sucai-center', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-center', 'namespaceId': 1558253, 'path': 'sucai-center', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-center', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:45:05+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-center'}, {'Id': 5196635, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:55+08:00', 'name': 'cid-admin-mobile-uni-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-mobile-uni-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-mobile-uni-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-mobile-uni-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-mobile-uni-vue2'}, {'Id': 5196633, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:38+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:38+08:00', 'name': 'cid-admin-client-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-client-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-client-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-client-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:38+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-client-vue2'}, {'Id': 5196632, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:34+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:34+08:00', 'name': 'ads-catch-data', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / ads-catch-data', 'namespaceId': 1558259, 'path': 'ads-catch-data', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/ads-catch-data', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:34+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/ads-catch-data'}, {'Id': 5196631, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:25+08:00', 'name': 'cid-backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / cid / cid-backend', 'namespaceId': 1558257, 'path': 'cid-backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/cid/cid-backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/cid/cid-backend'}, {'Id': 5196629, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:44:05+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:44:05+08:00', 'name': 'cid-fronted', 'nameWithNamespace': '677fa072d530afe31a8739b4 / cid / cid-fronted', 'namespaceId': 1558257, 'path': 'cid-fronted', 'pathWithNamespace': '677fa072d530afe31a8739b4/cid/cid-fronted', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:44:05+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/cid/cid-fronted'}, {'Id': 5196627, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:55+08:00', 'name': 'ytcid', 'nameWithNamespace': '677fa072d530afe31a8739b4 / zhou / ytcid', 'namespaceId': 1558264, 'path': 'ytcid', 'pathWithNamespace': '677fa072d530afe31a8739b4/zhou/ytcid', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/zhou/ytcid'}, {'Id': 5196625, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:38+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:38+08:00', 'name': 'sucai-center-bak', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-center-bak', 'namespaceId': 1558253, 'path': 'sucai-center-bak', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-center-bak', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:38+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-center-bak'}, {'Id': 5196624, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:34+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:34+08:00', 'name': 'houtai-backend-base', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / houtai-backend-base', 'namespaceId': 1558259, 'path': 'houtai-backend-base', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/houtai-backend-base', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:34+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/houtai-backend-base'}, {'Id': 5196622, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:31+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:31+08:00', 'name': 'hr-admin-laravel', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr-admin-laravel', 'namespaceId': 1558256, 'path': 'hr-admin-laravel', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr-admin-laravel', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:31+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr-admin-laravel'}, {'Id': 5196621, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:29+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:29+08:00', 'name': 'hr_admin_backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr_admin_backend', 'namespaceId': 1558256, 'path': 'hr_admin_backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr_admin_backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:29+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr_admin_backend'}, {'Id': 5196620, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:24+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:24+08:00', 'name': 'hr_backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / hr / hr_backend', 'namespaceId': 1558256, 'path': 'hr_backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/hr/hr_backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:24+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/hr/hr_backend'}, {'Id': 5196618, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:43:08+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:43:08+08:00', 'name': 'houtai-base-vue3', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / houtai-base-vue3', 'namespaceId': 1558259, 'path': 'houtai-base-vue3', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/houtai-base-vue3', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:43:08+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/houtai-base-vue3'}, {'Id': 5196616, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:28+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:28+08:00', 'name': 'overseas', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / overseas', 'namespaceId': 1558253, 'path': 'overseas', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/overseas', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:28+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/overseas'}, {'Id': 5196615, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:25+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:25+08:00', 'name': 'cid-server', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-server', 'namespaceId': 1558259, 'path': 'cid-server', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-server', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:25+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-server'}, {'Id': 5196613, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:42:09+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:42:09+08:00', 'name': 'sucai-hw-cms-backend', 'nameWithNamespace': '677fa072d530afe31a8739b4 / sucai / sucai-hw-cms-backend', 'namespaceId': 1558253, 'path': 'sucai-hw-cms-backend', 'pathWithNamespace': '677fa072d530afe31a8739b4/sucai/sucai-hw-cms-backend', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:42:09+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/sucai/sucai-hw-cms-backend'}, {'Id': 5196612, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:41:58+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:41:58+08:00', 'name': 'cid-admin-permit-vue2', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-admin-permit-vue2', 'namespaceId': 1558259, 'path': 'cid-admin-permit-vue2', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-admin-permit-vue2', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:41:58+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-admin-permit-vue2'}, {'Id': 5196611, 'accessLevel': 40, 'archive': False, 'createdAt': '2025-04-25T14:41:55+08:00', 'importStatus': 'finished', 'lastActivityAt': '2025-04-25T14:41:55+08:00', 'name': 'cid-server-0929', 'nameWithNamespace': '677fa072d530afe31a8739b4 / root / cid-server-0929', 'namespaceId': 1558259, 'path': 'cid-server-0929', 'pathWithNamespace': '677fa072d530afe31a8739b4/root/cid-server-0929', 'star': False, 'starCount': 0, 'updatedAt': '2025-04-25T14:41:55+08:00', 'visibilityLevel': '0', 'webUrl': 'https://codeup.aliyun.com/677fa072d530afe31a8739b4/root/cid-server-0929'}], 'success': True, 'total': 37}
+2025-04-26 17:57:37,125 - __main__ - INFO - 成功获取到代码库列表
+2025-04-26 17:57:37,126 - __main__ - INFO - 
+步骤4: 保存代码库信息到数据库...
+2025-04-26 17:57:37,126 - __main__ - INFO - 正在保存 20 个代码库信息到数据库...
+2025-04-26 17:57:37,325 - __main__ - INFO - 成功保存 20 个代码库信息到数据库
+2025-04-26 17:57:37,325 - __main__ - INFO - 成功存储 20 个代码库信息
+2025-04-26 17:57:37,325 - __main__ - INFO - 
+=== 代码库同步完成 ===
+2025-04-26 17:57:37,326 - alibabacloud_credentials.provider.refreshable - DEBUG - Shutting down executor...

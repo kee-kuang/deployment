@@ -1,0 +1,16 @@
+{
+    "database": {
+        "host": "rm-wz92wh6ma25r5u8v6yo.mysql.rds.aliyuncs.com",
+        "port": 3306,
+        "user": "sucai_cms",
+        "password": "2P8ZiVb20Yna3DV1@",
+        "db": "codeup_sync",
+        "charset": "utf8mb4"
+    },
+    "devops": {
+        "organization_id": "677fa072d530afe31a8739b4",
+        "access_key_id": "LTAI5tQuanaHZuZeB8NtjftM",
+        "access_key_secret": "hpL0t9crcU2mh4OwdnXgqp9rZ8C34L",
+        "endpoint": "devops.cn-hangzhou.aliyuncs.com"
+    }
+}
