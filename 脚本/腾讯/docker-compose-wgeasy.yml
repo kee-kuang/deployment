@@ -1,0 +1,33 @@
+services:
+  wg-easy:
+    image: registry.cn-guangzhou.aliyuncs.com/keee/wg-easy:latest
+    container_name: wg-easy
+    volumes:
+      - .:/etc/wireguard
+    ports:
+      - "51820:51820/udp"
+      - "51821:51821/tcp"
+    environment:
+      # 修改为公司出口路由器的公网固定 IP 或 DDNS 域名
+      - WG_HOST=183.6.106.208 
+      
+      # 修改管理后台的登录密码
+      - PASSWORD=MZlC7lLOF5plqKJQ
+      
+      # 设置 DNS
+      - WG_DEFAULT_DNS=223.5.5.5,114.114.114.114
+      
+      # 重要：设置允许访问的网段
+      # 10.8.0.0/24 是 VPN 自己的网段
+      # 192.168.100.0/24 为公司真实的内网 IP 段
+      - WG_ALLOWED_IPS=10.8.0.0/24, 192.168.100.0/24
+      
+      # 默认端口
+      - WG_PORT=51820
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1

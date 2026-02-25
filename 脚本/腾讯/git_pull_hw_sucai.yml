@@ -1,0 +1,38 @@
+---
+- name: Update sucai-cms-backend-hyperf-hw repository
+  hosts: works
+  become: yes
+  vars:
+    repo_url: "git@gitlab.yuetougz.com:5006/sucai/sucai-cms-backend-hyperf.git"
+    dest_dir: "/www/sucai-cms-backend-hyperf-hw"
+    branch: "master"
+  tasks:
+    - name: Ensure the repository is present and up-to-date
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ dest_dir }}"
+        version: "{{ branch }}"
+        force: yes
+      register: git_result
+
+    - name: Print git pull result
+      debug:
+        var: git_result
+
+    - name: Run composer install if git changed
+      command: composer install --no-dev --optimize-autoloader
+      args:
+        chdir: "{{ dest_dir }}"
+      when: git_result.changed
+      register: composer_result
+
+    - name: Print composer result
+      debug:
+        var: composer_result
+      when: git_result.changed
+
+    - name: Restart supervisor process if git changed
+      supervisorctl:
+        name: "sucai-cms-hw-api:sucai-cms-hw-api_00"
+        state: restarted
+      when: git_result.changed

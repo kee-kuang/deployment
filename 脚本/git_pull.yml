@@ -1,0 +1,11 @@
+---
+- name: Run git pull in /www/yuetougz.com/sucai/sucai-cms-backend
+  hosts: workers
+  become: yes  
+  tasks:
+    - name: Execute git pull
+      command: 
+        cmd: git pull
+        chdir: /www/yuetougz.com/sucai/sucai-cms-backend  
+      register: result
+      failed_when: "'error' in result.stderr or result.rc != 0"

@@ -1,0 +1,12 @@
+- hosts: test
+  gather_facts: no
+  tasks:
+    - name: 复制安装脚本到目标主机
+      copy:
+        src: /root/install.sh
+        dest: /root/install.sh
+        mode: '0755'
+
+    - name: 执行安装脚本
+      command: /root/install.sh
+

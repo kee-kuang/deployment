@@ -1,0 +1,21 @@
+---
+- name: 执行替换操作的脚本
+  hosts: wes  # 目标主机组
+  become: yes  # 使用 sudo 权限
+  vars:
+    old_num: 2  
+    # 从主机名中提取数字并减去 1
+    new_num: "{{ inventory_hostname | regex_replace('.*(\\d+)', '\\1') | int - 1 }}"
+
+  tasks:
+    - name: 上传脚本到目标主机
+      copy:
+        src: sed.sh  # 本地脚本路径
+        dest: /root/sed.sh  # 目标路径
+        mode: '0755'  # 确保脚本可执行
+
+    - name: 执行脚本，传递变量
+      command: /root/sed.sh {{ old_num }} {{ new_num }}
+      args:
+        chdir: /etc/supervisord.d/  # 设置脚本执行时的工作目录
+

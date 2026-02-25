@@ -1,0 +1,95 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'NodeJs-16.20.2'
+    }
+
+    options {
+        disableConcurrentBuilds()
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
+
+    environment {
+        TAR_NAME = 'cid-front.tar.gz'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'master']],
+                    userRemoteConfigs: [[
+                        url: 'http://gitlab.yuetougz.com:5006/zhou/ytcid.git',
+                        credentialsId: '93efbd9e-c5b8-4294-bec3-72225fbcacea'
+                    ]]
+                ])
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                    node -v
+                    npm install --registry=https://registry.npmmirror.com/
+                    npm run build:prod
+                '''
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh '''
+                    rm -f ${TAR_NAME}
+                    tar -czf ${TAR_NAME} dist-prod
+                    ls -lh ${TAR_NAME}
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    def servers = [
+                        [name: 'cid-work-test'],
+                        [name: 'ali-master']
+                    ]
+
+                    for (s in servers) {
+                        sshPublisher(
+                            publishers: [
+                                sshPublisherDesc(
+                                    configName: s.name,
+                                    transfers: [
+                                        sshTransfer(
+                                            sourceFiles: TAR_NAME,
+                                            remoteDirectory: '/tmp',
+                                            execCommand: 'bash -x /www/script/front-release.sh',
+                                            execTimeout: 120000
+                                        )
+                                    ],
+                                    verbose: true
+                                )
+                            ]
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ 前端零中断发布完成'
+        }
+        failure {
+            echo '❌ 前端发布失败'
+        }
+        always {
+            cleanWs()
+        }
+    }
+}

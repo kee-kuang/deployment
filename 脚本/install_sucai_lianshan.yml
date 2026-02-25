@@ -1,0 +1,127 @@
+ for i in {31..35}; do
+   ansible work$i -m script -a "/root/install.sh" -i hosts.ini
+ done
+---
+- name: 执行安装脚本并部署 .env 文件到目标机器
+  hosts: test  # 目标主机组
+  become: true  # 使用 root 权限操作
+  gather_facts: no  # 不收集系统信息
+  
+  tasks:
+    # 复制安装脚本到目标主机
+    - name: 复制安装脚本到目标主机
+      copy:
+        src: /root/install.sh
+        dest: /root/install.sh
+        mode: '0755'
+
+    # 执行安装脚本
+    - name: 执行安装脚本
+      command: /root/install.sh
+
+    # 等待安装完成
+    - name: 等待安装完成
+      pause:
+        seconds: 10
+    # 创建并部署 .env 文件
+    - name: 创建并部署 .env 文件到 /etc 目录
+      copy:
+        dest: /www/yuetougz.com/sucai/sucai-cms-backend/.env
+        content: |
+          APP_NAME=Laravel
+          APP_ENV=oss
+          APP_KEY=
+          APP_DEBUG=true
+          APP_URL=http://172.16.17.97:9003/api
+          
+          LOG_CHANNEL=stack
+          LOG_DEPRECATIONS_CHANNEL=null
+          LOG_LEVEL=debug
+
+          DB_CONNECTION=mysql
+          DB_HOST=192.168.100.202
+          DB_PORT=3306
+          DB_DATABASE=sucai_cms
+          DB_USERNAME=root
+          DB_PASSWORD='2P8ZiVb20Yna3DV1@'
+
+          DB2_HOST=yuetou.rwlb.rds.aliyuncs.com
+          DB2_PORT=3306
+          DB2_DATABASE_HOUR=cid_data
+          DB2_USERNAME_HOUR=yutou_cid_8888
+          DB2_PASSWORD_HOUR='YKbe1HR#toe#C4e*plkF@OKM4Lx%s'
+
+          DB3_HOST=yuetou.rwlb.rds.aliyuncs.com
+          DB3_PORT=3306
+          DB3_DATABASE=sucai_oss
+          DB3_USERNAME=sucai_cms_oss_8666
+          DB3_PASSWORD='TKbe1RR6toe!COe*plkF@IKM4Mx%s'
+
+          BROADCAST_DRIVER=log
+          CACHE_DRIVER=file
+          FILESYSTEM_DISK=local
+          QUEUE_CONNECTION=rabbitmq
+          SESSION_DRIVER=file
+          SESSION_LIFETIME=120
+
+          MEMCACHED_HOST=172.17.0.1
+
+          REDIS_HOST=r-wz994vhga81qbi3x52.redis.rds.aliyuncs.com
+          REDIS_PASSWORD='2^MYVyo4SEfOoQ#V2rDd%ZVD&vLC0F'
+          REDIS_PORT=6379
+          REDIS_CACHE_DB=9
+
+          REDIS_OSS_HOST=r-wz994vhga81qbi3x52pd.redis.rds.aliyuncs.com
+          REDIS_OSS_PASSWORD='2^MYVyo4SEfOoQ#V2rDd%ZVD&vLC0F'
+          REDIS_OSS_PORT=7619
+          REDIS_OSS_CACHE_DB=9
+
+          RABBITMQ_CONSUMER_TAG=prod
+          RABBITMQ_HOST=rabbitmq-serverless-cn-0dw40bbbf0c.cn-shenzhen.amqp-16.net.mq.amqp.aliyuncs.com
+          RABBITMQ_PORT=5672
+          RABBITMQ_VHOST=sucai_cms
+          RABBITMQ_LOGIN=MjpyYWJiaXRtcS1zZXJ2ZXJsZXNzLWNuLTBkdzQwYmJiZjBjOkxUQUk1dEo3RERvcWZ2c3dEaVlBUVAycQ==
+          RABBITMQ_USER=MjpyYWJiaXRtcS1zZXJ2ZXJsZXNzLWNuLTBkdzQwYmJiZjBjOkxUQUk1dEo3RERvcWZ2c3dEaVlBUVAycQ==
+          RABBITMQ_PASSWORD=Qjg5MzhDQkM3ODQwMEFEMEQ3RTU2OUY2N0Q2QTBFNEFBODU5ODRGMjoxNzMxODk5ODk4ODcx
+          RABBITMQ_QUEUE=default
+
+          VIDEO_PATH="C:\\video\\"
+
+          MAIL_MAILER=smtp
+          MAIL_HOST=mailpit
+          MAIL_PORT=1025
+          MAIL_USERNAME=null
+          MAIL_PASSWORD=null
+          MAIL_ENCRYPTION=null
+          MAIL_FROM_ADDRESS="hello@example.com"
+          MAIL_FROM_NAME="${APP_NAME}"
+
+          PUSHER_APP_ID=
+          PUSHER_APP_KEY=
+          PUSHER_APP_SECRET=
+          PUSHER_HOST=
+          PUSHER_PORT=443
+          PUSHER_SCHEME=https
+          PUSHER_APP_CLUSTER=mt1
+
+          VITE_APP_NAME="${APP_NAME}"
+          VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+          VITE_PUSHER_HOST="${PUSHER_HOST}"
+          VITE_PUSHER_PORT="${PUSHER_PORT}"
+          VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
+          VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+
+          NAS_PATH=/nas
+          TOS_PATH=nas
+          NAS_PRIVATE_KEY=wz92wh6ma25r5u8v6yo
+
+          NAS_GROUP_LIMIT_SIZE=2147483648000
+
+          AI_API=http://192.168.100.175:8000/show/
+
+          TOS_REGION=cn-beijing
+          TOS_ENDPOINT=tos-cn-beijing.ivolces.com
+          TOS_ACCESS_KEY=AKLTYmNhMzhiNWQ1YjJjNDdjMDk0NGRmY2Q0MjNjZWJmMDk
+          TOS_PRIVATE_KEY=TkRGbE0yVmhNalEwTlRoak5EWXhZV0V3WVRJd1kyRTBaRE5sTm1KaE1UZw==
+          TOS_BUCKET=jln-yuetou
+        mode: '0777'
