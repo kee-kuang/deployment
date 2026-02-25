@@ -10,8 +10,8 @@
 # ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 请在此处修改配置 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
 # 1. COS 访问密钥 (必填)
-COS_SECRET_ID="AKIDbBbnmaSHvqcBfy74oMhohNr8D5mFUVP9"
-COS_SECRET_KEY="bzBC0ax65tUu89wWs2zjFZgaHk2PgkdJ"
+COS_SECRET_ID="YOUR_SECRET_ID_HERE"
+COS_SECRET_KEY="YOUR_SECRET_KEY_HERE"
 COS_REGION="ap-guangzhou"  
 
 # 2. 存储桶信息 (必填)

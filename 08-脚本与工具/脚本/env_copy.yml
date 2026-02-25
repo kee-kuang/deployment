@@ -100,8 +100,8 @@
 
           TOS_REGION=cn-beijing
           TOS_ENDPOINT=tos-cn-beijing.ivolces.com
-          TOS_ACCESS_KEY=AKLTYmNhMzhiNWQ1YjJjNDdjMDk0NGRmY2Q0MjNjZWJmMDk
-          TOS_PRIVATE_KEY=TkRGbE0yVmhNalEwTlRoak5EWXhZV0V3WVRJd1kyRTBaRE5sTm1KaE1UZw==
+          TOS_ACCESS_KEY=YOUR_ACCESS_KEY_HERE
+          TOS_PRIVATE_KEY=YOUR_PRIVATE_KEY_HERE
           TOS_BUCKET=jln-yuetou
         mode: '0777'
 
